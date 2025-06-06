@@ -67,13 +67,19 @@ def_poi_mapping_amenity: &poi_mapping_amenity
 
 # barrier values , see http://taginfo.openstreetmap.org/keys/barrier#values
 def_poi_mapping_barrier: &poi_mapping_barrier
+  - block
   - bollard
   - border_control
   - cycle_barrier
+  - debris
+  - full-height_turnstile
   - gate
   - lift_gate
+  - motorcycle_barrier
   - sally_port
+  - sliding_beam
   - stile
+  - swing_gate
   - toll_booth
 
 # building values , see http://taginfo.openstreetmap.org/keys/building#values

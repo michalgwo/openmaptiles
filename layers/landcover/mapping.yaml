@@ -16,6 +16,7 @@ tables:
       landuse:
       - allotments
       - farm
+      - farmyard
       - farmland
       - orchard
       - flowerbed
