@@ -429,6 +429,12 @@ endif
 import-osm: all start-db-nowait
 	@$(assert_area_is_given)
 	$(DOCKER_COMPOSE) $(DC_CONFIG_CACHE) run $(DC_OPTS_CACHE) openmaptiles-tools sh -c 'pgwait && import-osm $(PBF_FILE)'
+	osm2pgsql $(PBF_FILE) -d postgresql://openmaptiles:openmaptiles@localhost:5432/openmaptiles --output=flex --style=../osm2pgsql/flex-config/trails.lua
+
+.PHONY: import-trails
+import-trails: all start-db-nowait
+	@$(assert_area_is_given)
+	osm2pgsql $(PBF_FILE) -d postgresql://openmaptiles:openmaptiles@localhost:5432/openmaptiles --output=flex --style=../osm2pgsql/flex-config/trails.lua
 
 .PHONY: start-update-osm
 start-update-osm: start-db
