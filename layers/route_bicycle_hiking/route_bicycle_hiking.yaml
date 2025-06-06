@@ -35,10 +35,13 @@ layer:
     symbol:
       description: |
           Symbol of the trail
+    wiki_symbol:
+      description: |
+          Wiki symbol of the trail
   datasource:
     geometry_field: geometry
     srid: 900913
-    query: (SELECT geometry, relation_id, class, bicycle_network, bicycle_name, bicycle_ref, hiking_network, hiking_name, hiking_ref, colour, symbol FROM layer_route_bicycle_hiking(!bbox!, z(!scale_denominator!))) AS t
+    query: (SELECT geometry, relation_id, class, bicycle_network, bicycle_name, bicycle_ref, hiking_network, hiking_name, hiking_ref, colour, symbol, wiki_symbol FROM layer_route_bicycle_hiking(!bbox!, z(!scale_denominator!))) AS t
 schema:
   - ./update_route_bicycle_hiking_merge.sql
   - ./route_bicycle_hiking.sql

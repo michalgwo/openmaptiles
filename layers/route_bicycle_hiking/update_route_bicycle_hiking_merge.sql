@@ -4,7 +4,7 @@ DROP TRIGGER IF EXISTS trigger_flag_route_bicycle_hiking ON osm_route_bicycle_hi
 DROP TRIGGER IF EXISTS trigger_refresh ON route_bicycle_hiking.updates;
 
 TRUNCATE osm_route_bicycle_hiking_linestring;
-INSERT INTO osm_route_bicycle_hiking_linestring (relation_id, osm_id, role, type, route, ref, network, name, colour, symbol, geometry)
+INSERT INTO osm_route_bicycle_hiking_linestring (relation_id, osm_id, role, type, route, ref, network, name, colour, symbol, wiki_symbol, geometry)
 SELECT
 	h.rel_member['rel_id']::bigint AS relation_id,
 	h.way_id AS osm_id,
@@ -16,6 +16,7 @@ SELECT
 	r.name,
     r.colour,
     r.symbol,
+    r.wiki_symbol,
 	h.geom AS geometry
 FROM (SELECT way_id, jsonb_array_elements(rels_member) AS rel_member, geom from osm2pgsql_hiking_highways) h
 JOIN osm2pgsql_hiking_relations r on r.relation_id = h.rel_member['rel_id']::bigint;
@@ -316,7 +317,8 @@ SELECT DISTINCT ON (osm_id, route, relation_id)
     name,
     ref,
     colour,
-    symbol
+    symbol,
+    wiki_symbol
 FROM
     osm_route_bicycle_hiking_linestring
 WHERE
@@ -344,7 +346,8 @@ SELECT
     hiking.name AS hiking_name,
     hiking.ref AS hiking_ref,
     hiking.colour AS colour,
-    hiking.symbol AS symbol
+    hiking.symbol AS symbol,
+    hiking.wiki_symbol AS wiki_symbol
 FROM
     (SELECT * FROM osm_route_bicycle_hiking_max_network WHERE route = 'bicycle') AS bicycle
     FULL OUTER JOIN (SELECT * FROM osm_route_bicycle_hiking_max_network WHERE route = 'hiking' OR route = 'foot') AS hiking ON
@@ -364,9 +367,9 @@ FROM osm_border_linestring_union
 WHERE ST_GeometryType(geometry)='ST_LineString';
 
 CREATE OR REPLACE VIEW osm_route_bicycle_hiking_network_union AS
-SELECT ST_Union(h.geometry) as geometry, h.relation_id, h.class, h.bicycle_network, h.bicycle_name, h.bicycle_ref, h.hiking_network, h.hiking_name, h.hiking_ref, h.colour, h.symbol
+SELECT ST_Union(h.geometry) as geometry, h.relation_id, h.class, h.bicycle_network, h.bicycle_name, h.bicycle_ref, h.hiking_network, h.hiking_name, h.hiking_ref, h.colour, h.symbol, h.wiki_symbol
 FROM osm_route_bicycle_hiking_network h
-GROUP BY h.relation_id, h.class, h.bicycle_network, h.bicycle_name, h.bicycle_ref, h.hiking_network, h.hiking_name, h.hiking_ref, h.colour, h.symbol;
+GROUP BY h.relation_id, h.class, h.bicycle_network, h.bicycle_name, h.bicycle_ref, h.hiking_network, h.hiking_name, h.hiking_ref, h.colour, h.symbol, h.wiki_symbol;
 
 
 CREATE TABLE IF NOT EXISTS osm_route_bicycle_hiking_network_merge (
@@ -381,14 +384,15 @@ CREATE TABLE IF NOT EXISTS osm_route_bicycle_hiking_network_merge (
     hiking_name varchar,
     hiking_ref varchar,
     colour varchar,
-    symbol varchar
+    symbol varchar,
+    wiki_symbol varchar
 );
 
 TRUNCATE osm_route_bicycle_hiking_network_merge;
 
 -- etldoc: osm_route_bicycle_hiking_network -> osm_route_bicycle_hiking_network_merge
 
-INSERT INTO osm_route_bicycle_hiking_network_merge (geometry, relation_id, class, bicycle_network, bicycle_name, bicycle_ref, hiking_network, hiking_name, hiking_ref, colour, symbol)
+INSERT INTO osm_route_bicycle_hiking_network_merge (geometry, relation_id, class, bicycle_network, bicycle_name, bicycle_ref, hiking_network, hiking_name, hiking_ref, colour, symbol, wiki_symbol)
 SELECT (ST_Dump(ST_LineMerge(
         CASE 
             WHEN b.geometry IS NOT NULL THEN ST_Intersection(b.geometry, h.geometry)
@@ -404,7 +408,8 @@ SELECT (ST_Dump(ST_LineMerge(
     h.hiking_name,
     h.hiking_ref,
     h.colour,
-    h.symbol
+    h.symbol,
+    h.wiki_symbol
 FROM
     osm_route_bicycle_hiking_network_union h
 LEFT JOIN (SELECT * FROM osm_border_linestring_union_polygons WHERE relation_id=check_province_border_rel_id() LIMIT 1) b
@@ -449,7 +454,8 @@ BEGIN
         hiking_name,
         hiking_ref,
         colour,
-        symbol
+        symbol,
+        wiki_symbol
     FROM osm_route_bicycle_hiking_network_merge
     WHERE
         (update_id IS NULL OR id = update_id) AND
@@ -468,7 +474,8 @@ BEGIN
         hiking_name,
         hiking_ref,
         colour,
-        symbol
+        symbol,
+        wiki_symbol
     FROM osm_route_bicycle_hiking_network_gen_z12
     WHERE
         (update_id IS NULL OR id = update_id) AND
@@ -487,7 +494,8 @@ BEGIN
         hiking_name,
         hiking_ref,
         colour,
-        symbol
+        symbol,
+        wiki_symbol
     FROM osm_route_bicycle_hiking_network_gen_z11
     WHERE
         (update_id IS NULL OR id = update_id) AND
@@ -506,7 +514,8 @@ BEGIN
         hiking_name,
         hiking_ref,
         colour,
-        symbol
+        symbol,
+        wiki_symbol
     FROM osm_route_bicycle_hiking_network_gen_z10
     WHERE
         (update_id IS NULL OR id = update_id) AND
@@ -526,7 +535,8 @@ BEGIN
         hiking_name,
         hiking_ref,
         colour,
-        symbol
+        symbol,
+        wiki_symbol
     FROM osm_route_bicycle_hiking_network_gen_z9
     WHERE
         (update_id IS NULL OR id = update_id) AND
@@ -545,7 +555,8 @@ BEGIN
         hiking_name,
         hiking_ref,
         colour,
-        symbol
+        symbol,
+        wiki_symbol
     FROM osm_route_bicycle_hiking_network_gen_z8
     WHERE
         (update_id IS NULL OR id = update_id) AND
@@ -565,7 +576,8 @@ BEGIN
         hiking_name,
         hiking_ref,
         colour,
-        symbol
+        symbol,
+        wiki_symbol
     FROM osm_route_bicycle_hiking_network_gen_z7
     WHERE
         (update_id IS NULL OR id = update_id) AND
@@ -584,7 +596,8 @@ BEGIN
         hiking_name,
         hiking_ref,
         colour,
-        symbol
+        symbol,
+        wiki_symbol
     FROM osm_route_bicycle_hiking_network_gen_z6
     WHERE
         (update_id IS NULL OR id = update_id) AND
@@ -604,7 +617,8 @@ BEGIN
         hiking_name,
         hiking_ref,
         colour,
-        symbol
+        symbol,
+        wiki_symbol
     FROM osm_route_bicycle_hiking_network_gen_z5
     WHERE
         (update_id IS NULL OR id = update_id) AND
@@ -688,19 +702,20 @@ CREATE TABLE IF NOT EXISTS route_bicycle_hiking.changes
     name varchar,
     ref varchar,
     colour varchar,
-    symbol varchar
+    symbol varchar,
+    wiki_symbol varchar
 );
 
 CREATE OR REPLACE FUNCTION route_bicycle_hiking.store() RETURNS trigger AS
 $$
 BEGIN
     IF (tg_op = 'DELETE' OR tg_op = 'UPDATE') AND old.type = 1 THEN
-        INSERT INTO route_bicycle_hiking.changes(osm_id, relation_id, role, is_old, geometry, route, network, name, ref, colour, symbol)
-        VALUES (old.osm_id, old.relation_id, old.role, true, old.geometry, old.route, old.network, old.name, old.ref, old.colour, ols.symbol);
+        INSERT INTO route_bicycle_hiking.changes(osm_id, relation_id, role, is_old, geometry, route, network, name, ref, colour, symbol, wiki_symbol)
+        VALUES (old.osm_id, old.relation_id, old.role, true, old.geometry, old.route, old.network, old.name, old.ref, old.colour, old.symbol, old.wiki_symbol);
     END IF;
     IF (tg_op = 'UPDATE' OR tg_op = 'INSERT') AND new.type = 1 THEN
-        INSERT INTO route_bicycle_hiking.changes(osm_id, relation_id, role, is_old, geometry, route, network, name, ref, colour, symbol)
-        VALUES (new.osm_id, new.relation_id, new.role, false, new.geometry, new.route, new.network, new.name, new.ref, new.colour, new.symbol);
+        INSERT INTO route_bicycle_hiking.changes(osm_id, relation_id, role, is_old, geometry, route, network, name, ref, colour, symbol, wiki_symbol)
+        VALUES (new.osm_id, new.relation_id, new.role, false, new.geometry, new.route, new.network, new.name, new.ref, new.colour, new.symbol, new.wiki_symbol);
     END IF;
     RETURN NULL;
 END;
@@ -744,7 +759,8 @@ BEGIN
         name,
         ref,
         colour,
-        symbol
+        symbol,
+        wiki_symbol
     FROM ((
               SELECT DISTINCT ON (osm_id) *
               FROM route_bicycle_hiking.changes
@@ -784,7 +800,8 @@ BEGIN
         o.name IS NOT DISTINCT FROM n.name AND
         o.ref IS NOT DISTINCT FROM n.ref AND
         o.colour IS NOT DISTINCT FROM n.colour AND
-        o.symbol IS NOT DISTINCT FROM n.symbol;
+        o.symbol IS NOT DISTINCT FROM n.symbol AND
+        o.wiki_symbol IS NOT DISTINCT FROM n.wiki_symbol;
 
     -- Delete unchanged ways
     DELETE FROM changes_compact
@@ -825,7 +842,8 @@ BEGIN
         name,
         ref,
         colour,
-        symbol
+        symbol,
+        wiki_symbol
     FROM ((
         SELECT
             osm_id,
@@ -837,7 +855,8 @@ BEGIN
             name,
             ref,
             colour,
-            symbol
+            symbol,
+            wiki_symbol
         FROM
             changes_compact
         WHERE
@@ -853,7 +872,8 @@ BEGIN
             name,
             ref,
             colour,
-            symbol
+            symbol,
+            wiki_symbol
         FROM
             osm_route_bicycle_hiking_linestring AS t
             JOIN original_merge AS c ON
@@ -885,14 +905,15 @@ BEGIN
         hiking.name AS hiking_name,
         hiking.ref AS hiking_ref,
         hiking.colour AS colour,
-        hiking.symbol AS symbol
+        hiking.symbol AS symbol,
+        hiking.wiki_symbol AS wiki_symbol
     FROM
         (SELECT * FROM changes_osm_route_bicycle_hiking_max_network WHERE route = 'bicycle') AS bicycle
         FULL OUTER JOIN (SELECT * FROM changes_osm_route_bicycle_hiking_max_network WHERE route = 'hiking' OR route = 'foot') AS hiking ON
             bicycle.osm_id = hiking.osm_id
     ;
 
-    INSERT INTO osm_route_bicycle_hiking_network_merge (geometry, relation_id, class, bicycle_network, bicycle_name, bicycle_ref, hiking_network, hiking_name, hiking_ref, colour, symbol)
+    INSERT INTO osm_route_bicycle_hiking_network_merge (geometry, relation_id, class, bicycle_network, bicycle_name, bicycle_ref, hiking_network, hiking_name, hiking_ref, colour, symbol, wiki_symbol)
     SELECT (ST_Dump(ST_LineMerge(ST_Union(geometry)))).geom::geometry(Geometry,3857) AS geometry,
         relation_id,
         class,
@@ -903,7 +924,8 @@ BEGIN
         hiking_name,
         hiking_ref,
         colour,
-        symbol
+        symbol,
+        wiki_symbol
     FROM
         changes_osm_route_bicycle_hiking_network
     GROUP BY
@@ -916,7 +938,8 @@ BEGIN
         hiking_name,
         hiking_ref,
         colour,
-        symbol;
+        symbol,
+        wiki_symbol;
 
     DROP VIEW changes_osm_route_bicycle_hiking_network;
     DROP TABLE changes_osm_route_bicycle_hiking_max_network;

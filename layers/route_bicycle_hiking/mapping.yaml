@@ -14,6 +14,10 @@ symbol_field: &symbol
   key: osmc:symbol
   name: symbol
   type: string
+wiki_symbol_field: &wiki_symbol
+  key: wiki:symbol
+  name: wiki_symbol
+  type: string
 
 tables:
   # etldoc: imposm3 -> osm_route_bicycle_hiking_linestring
@@ -46,3 +50,4 @@ tables:
     - *network
     - *name
     - *symbol
+    - *wiki_symbol
