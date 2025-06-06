@@ -1,0 +1,36 @@
+layer:
+  id: "outdoor_poi"
+  description: |
+      **outdoor_poi** contains pois for hiking.
+  buffer_size: 4
+  srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  fields:
+    name:
+      description: |
+          Name
+    name_en:
+      description: |
+          English name
+    name_pl:
+      description: |
+          Polish name
+    drinking_water:
+      description: |
+          Drinking water tag
+    class:
+      description: |
+          Key tag.
+    subclass:
+      description: |
+          Value of the key tag
+  datasource:
+    key_field: osm_id
+    key_field_as_attribute: no
+    geometry_field: geometry
+    srid: 900913
+    query: (SELECT osm_id, geometry, name, name_en, name_pl, {name_languages}, drinking_water, class, subclass FROM layer_outdoor_poi(!bbox!, z(!scale_denominator!), !pixel_width!)) AS t
+schema:
+  - ./outdoor_poi.sql
+datasources:
+  - type: imposm3
+    mapping_file: ./mapping.yaml

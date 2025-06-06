@@ -1,0 +1,48 @@
+name_field: &name
+  name: name
+  key: name
+  type: string
+network_field: &network
+  key: network
+  name: network
+  type: string
+ref_field: &ref
+  key: ref
+  name: ref
+  type: string
+symbol_field: &symbol
+  key: osmc:symbol
+  name: symbol
+  type: string
+
+tables:
+  # etldoc: imposm3 -> osm_route_bicycle_hiking_linestring
+  route_bicycle_hiking_linestring:
+    type: relation_member
+    mapping:
+      route:
+      - bicycle
+      - hiking
+      - foot
+    relation_types: [route]
+    columns:
+    - name: relation_id
+      type: id
+    - name: osm_id
+      type: member_id
+    - name: role
+      type: member_role
+    - name: type
+      type: member_type
+    - name: route
+      key: route
+      type: string
+    - name: colour
+      key: colour
+      type: string
+    - name: geometry
+      type: geometry
+    - *ref
+    - *network
+    - *name
+    - *symbol

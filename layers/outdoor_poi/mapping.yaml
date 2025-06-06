@@ -1,0 +1,115 @@
+def_poi_mapping_information: &poi_mapping_information
+  - board
+  - map
+  - office
+  - visitor_centre
+  - guidepost
+
+def_poi_mapping_tower_type: &poi_mapping_tower_type
+  - observation
+  - communication
+  - lighting
+  - bell_tower
+
+def_poi_mapping_shelter_type: &poi_mapping_shelter_type
+  - basic_hut
+
+def_poi_mapping_tourism: &poi_mapping_tourism
+  - alpine_hut
+  - wilderness_hut
+  - picnic_site
+  - viewpoint
+
+def_poi_mapping_amenity: &poi_mapping_amenity
+  - shelter
+  - drinking_water
+  - bench
+  - lounger
+  - shower
+  - fountain
+  - water_point
+
+def_poi_mapping_leisure: &poi_mapping_leisure
+  - firepit
+
+def_poi_mapping_natural: &poi_mapping_natural
+  - cave_entrance
+  - spring
+
+def_poi_mapping_waterway: &poi_mapping_waterway
+  - waterfall
+
+def_poi_mapping_historic: &poi_mapping_historic
+  - castle
+  - memorial
+  - monument
+  - wayside_cross
+  - wayside_shrine
+
+def_poi_mapping_castle_type: &poi_mapping_castle_type
+  - fortress
+
+def_poi_mapping_ford: &poi_mapping_ford
+  - "yes"
+  - stepping_stones
+
+def_poi_mapping_emergency: &poi_mapping_emergency
+  - mountain_rescue
+
+def_poi_mapping_man_made: &poi_mapping_man_made
+  - water_well
+  - water_tap
+  - cross
+  - obelisk
+
+def_poi_mapping: &poi_mapping
+  information: *poi_mapping_information
+  "tower:type": *poi_mapping_tower_type
+  shelter_type: *poi_mapping_shelter_type
+  tourism: *poi_mapping_tourism
+  amenity: *poi_mapping_amenity
+  leisure: *poi_mapping_leisure
+  natural: *poi_mapping_natural
+  waterway: *poi_mapping_waterway
+  castle_type: *poi_mapping_castle_type
+  historic: *poi_mapping_historic
+  ford: *poi_mapping_ford
+  emergency: *poi_mapping_emergency
+  man_made: *poi_mapping_man_made
+
+def_poi_fields: &poi_fields
+  - name: osm_id
+    type: id
+  - name: geometry
+    type: geometry
+  - name: area
+    type: area
+  - name: name
+    key: name
+    type: string
+  - name: name_en
+    key: name:en
+    type: string
+  - name: name_pl
+    key: name:pl
+    type: string
+  - name: tags
+    type: hstore_tags
+  - name: drinking_water
+    key: drinking_water
+    type: string
+  - name: subclass
+    type: mapping_value
+  - name: mapping_key
+    type: mapping_key
+
+tables:
+  outdoor_poi_point:
+    type: point
+    columns: *poi_fields
+    mapping: *poi_mapping
+
+  outdoor_poi_polygon:
+    type: polygon
+    columns: *poi_fields
+    mapping: *poi_mapping
