@@ -85,7 +85,7 @@ $$
 SELECT CASE
            WHEN transportation_filter_z12(highway, construction) THEN TRUE
            WHEN highway = 'service' OR construction = 'service' THEN service NOT IN ('driveway', 'parking_aisle')
-           WHEN highway_class(highway, public_transport, construction) IN ('minor', 'minor_construction') THEN TRUE
+           WHEN highway_class(highway, public_transport, construction) IN ('minor', 'minor_construction', 'track', 'path') THEN TRUE
            ELSE FALSE
        END
 $$ LANGUAGE SQL IMMUTABLE
