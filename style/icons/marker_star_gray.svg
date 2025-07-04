@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="vector"
+   width="40"
+   height="40"
+   viewBox="0 0 24 24"
+   version="1.1"
+   sodipodi:docname="marker_star_gray.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <inkscape:path-effect
+       effect="powerclip"
+       id="path-effect17"
+       is_visible="true"
+       lpeversion="1"
+       inverse="true"
+       flatten="false"
+       hide_clip="false"
+       message="Use fill-rule evenodd on &lt;b&gt;fill and stroke&lt;/b&gt; dialog if no flatten result after convert clip to paths." />
+    <linearGradient
+       id="swatch1"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop1" />
+    </linearGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5">
+      <path
+         style="display:inline;stroke:none;stroke-width:1.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;paint-order:normal"
+         sodipodi:type="inkscape:offset"
+         inkscape:radius="0"
+         inkscape:original="M 12 0 C 7.355999 0 3.5996094 3.7563906 3.5996094 8.4003906 C 3.5996094 14.700391 12 24 12 24 C 12 24 20.400391 14.700391 20.400391 8.4003906 C 20.400391 3.7563906 16.643999 1.1842379e-15 12 0 z "
+         xlink:href="#path1"
+         id="path6"
+         inkscape:href="#path1"
+         d="M 12,0 C 7.355999,0 3.5996094,3.7563906 3.5996094,8.4003906 3.5996094,14.700391 12,24 12,24 12,24 20.400391,14.700391 20.400391,8.4003906 20.400391,3.7563906 16.643999,0 12,0 Z" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath9">
+      <path
+         style="display:inline;fill:#f13738;fill-opacity:1;stroke:none;stroke-width:1.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;paint-order:normal"
+         sodipodi:type="inkscape:offset"
+         inkscape:radius="0"
+         inkscape:original="M 12 0 C 7.355999 0 3.5996094 3.7563906 3.5996094 8.4003906 C 3.5996094 14.700391 12 24 12 24 C 12 24 20.400391 14.700391 20.400391 8.4003906 C 20.400391 3.7563906 16.643999 1.1842379e-15 12 0 z "
+         xlink:href="#path1"
+         id="path9"
+         inkscape:href="#path1"
+         d="M 12,0 C 7.355999,0 3.5996094,3.7563906 3.5996094,8.4003906 3.5996094,14.700391 12,24 12,24 12,24 20.400391,14.700391 20.400391,8.4003906 20.400391,3.7563906 16.643999,0 12,0 Z" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath16">
+      <path
+         id="path17"
+         style="display:none;fill:#ffffff;stroke:none;stroke-width:0.6;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:transform-center-x="-0.76118152"
+         inkscape:transform-center-y="-1.5968078"
+         d="M 14.816284,12.480181 12.023851,10.705334 9.2539788,12.499023 9.9890796,9.166851 7.5,6.9483624 10.746752,6.663813 11.978288,3.4990232 13.249789,6.6553338 16.5,6.9178752 14.03908,9.153132 Z"
+         inkscape:label="star stroke" />
+      <path
+         id="lpe_path-effect17"
+         style="display:inline;fill:#ffffff;stroke:none;stroke-width:0.6;stroke-dasharray:none;stroke-opacity:1"
+         class="powerclip"
+         d="M -1.3999999,-5 H 25.4 V 29 H -1.3999999 Z M 14.816284,12.480181 14.03908,9.153132 16.5,6.9178752 13.249789,6.6553338 11.978288,3.4990232 10.746752,6.663813 7.5,6.9483624 9.9890796,9.166851 9.2539788,12.499023 12.023851,10.705334 Z" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="8"
+     inkscape:cx="1.125"
+     inkscape:cy="35.6875"
+     inkscape:window-width="1920"
+     inkscape:window-height="1000"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="vector" />
+  <path
+     fill="#e53935"
+     d="M 12.000001,0 C 7.356,0 3.6000001,3.7559999 3.6000001,8.3999999 3.6000001,14.7 12.000001,24 12.000001,24 12.000001,24 20.4,14.7 20.4,8.3999999 20.4,3.7559999 16.644,0 12.000001,0 Z"
+     id="path1"
+     style="display:inline;fill:#b5b5b5;fill-opacity:1;stroke:none;stroke-width:1.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;paint-order:normal"
+     sodipodi:nodetypes="sscss"
+     clip-path="url(#clipPath16)"
+     inkscape:label="marker"
+     inkscape:path-effect="#path-effect17"
+     inkscape:original-d="M 12.000001,0 C 7.356,0 3.6000001,3.7559999 3.6000001,8.3999999 3.6000001,14.7 12.000001,24 12.000001,24 12.000001,24 20.4,14.7 20.4,8.3999999 20.4,3.7559999 16.644,0 12.000001,0 Z" />
+  <path
+     style="display:inline;fill:none;fill-opacity:1;stroke:#a8a8a8;stroke-width:1.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;paint-order:normal"
+     sodipodi:type="inkscape:offset"
+     inkscape:radius="0"
+     inkscape:original="M 12 0 C 7.355999 0 3.5996094 3.7563906 3.5996094 8.4003906 C 3.5996094 14.700391 12 24 12 24 C 12 24 20.400391 14.700391 20.400391 8.4003906 C 20.400391 3.7563906 16.643999 1.1842379e-15 12 0 z "
+     xlink:href="#path1"
+     id="path5"
+     inkscape:href="#path1"
+     d="M 12,0 C 7.355999,0 3.5996094,3.7563906 3.5996094,8.4003906 3.5996094,14.700391 12,24 12,24 12,24 20.400391,14.700391 20.400391,8.4003906 20.400391,3.7563906 16.643999,0 12,0 Z"
+     clip-path="url(#clipPath9)"
+     inkscape:label="marker stroke" />
+  <path
+     id="path16"
+     style="display:inline;fill:#ffffff;stroke:#a8a8a8;stroke-width:0.583014;stroke-dasharray:none;stroke-opacity:1;paint-order:normal;fill-opacity:1"
+     inkscape:transform-center-x="-0.87162295"
+     inkscape:transform-center-y="-1.8245211"
+     d="M 15.226897,13.032206 12.029305,11.004257 8.857549,13.053733 9.6993076,9.2463787 6.8490819,6.711523 10.566911,6.3863956 l 1.410224,-3.6161048 1.455982,3.6064164 3.721792,0.2999806 -2.81798,2.5540149 z"
+     inkscape:label="star stroke" />
+</svg>

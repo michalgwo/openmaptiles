@@ -7,13 +7,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="14"
-   height="14"
+   width="28"
+   height="28"
    viewBox="0 0 14 14"
    fill="none"
    version="1.1"
    id="svg29764"
-   sodipodi:docname="frozen_food.svg"
+   sodipodi:docname="chocolate.svg"
    inkscape:version="1.0.2 (e86c8708, 2021-01-15)">
   <metadata
      id="metadata29770">
@@ -43,15 +43,16 @@
      id="namedview29766"
      showgrid="false"
      inkscape:zoom="33.14"
-     inkscape:cx="7"
+     inkscape:cx="-0.18165359"
      inkscape:cy="7"
-     inkscape:window-x="0"
-     inkscape:window-y="25"
+     inkscape:window-x="55"
+     inkscape:window-y="56"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg29764"
-     inkscape:pagecheckerboard="true" />
+     inkscape:pagecheckerboard="true"
+     inkscape:document-rotation="0" />
   <circle
-     style="fill:#ac39ac;fill-rule:evenodd;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+     style="fill:#c77400;fill-rule:evenodd;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;fill-opacity:1"
      id="path30353"
      cx="6.8497281"
      cy="7.0609536"

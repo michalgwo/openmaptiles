@@ -2,16 +2,38 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   width="14"
-   height="14"
-   viewBox="0 0 14 14"
-   id="svg2">
+   width="28"
+   height="28"
+   viewBox="0 0 28 28"
+   id="svg2"
+   sodipodi:docname="car_parts.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="21.428571"
+     inkscape:cx="14"
+     inkscape:cy="13.976667"
+     inkscape:window-width="1920"
+     inkscape:window-height="1000"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
   <defs
      id="defs3053" />
   <metadata
@@ -22,19 +44,19 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <rect
-     width="14"
-     height="14"
+     width="28"
+     height="28"
      x="0"
      y="0"
      id="canvas"
      style="fill:none;stroke:none;visibility:hidden" />
   <path
-     d="m 9,3 0,-2 3,0 0,2 z M 2,3 2,1 5,1 5,3 z M 0,3 0,13 14,13 14,3 z M 3.4455611,5 5,5 l 0,2 2,0 0,1.5778894 -2,0 L 5,10.60134 3.4370847,10.634261 3.4615242,8.5300029 1.3911725,8.5459664 1.4221106,7 3.4295976,7 z M 9,7 13,7 13,8.6108059 9,8.5948424 z"
+     d="M 18,6 V 2 h 6 V 6 Z M 4,6 V 2 h 6 V 6 Z M 0,6 V 26 H 28 V 6 Z m 6.8911222,4 H 10 v 4 h 4 v 3.155779 H 10 V 21.20268 L 6.8741694,21.268522 6.9230484,17.060006 2.782345,17.091933 2.8442212,14 h 4.014974 z M 18,14 h 8 v 3.221612 l -8,-0.03193 z"
      id="path2991"
-     style="fill:#ac39ac;fill-opacity:1;fill-rule:evenodd;stroke:none" />
+     style="fill:#ac39ac;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2" />
 </svg>

@@ -2,19 +2,46 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   width="14"
-   height="14"
-   viewBox="0 0 14 14">
+   width="28"
+   height="28"
+   viewBox="0 0 28 28"
+   id="svg1"
+   sodipodi:docname="taoist.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="21.428571"
+     inkscape:cx="14"
+     inkscape:cy="13.976667"
+     inkscape:window-width="1920"
+     inkscape:window-height="1000"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
   <rect
-     width="14"
-     height="14"
+     width="28"
+     height="28"
      x="0"
      y="0"
      id="canvas"
      style="fill:none;stroke:none;visibility:hidden" />
   <path
-     d="m 7,14 c 3.858078,0 7,-3.169117 7,-7 C 14,3.169117 10.877274,0 7,0 3.122726,0 0,3.13993 0,7 c 0,3.860071 3.141922,7 7,7 z M 7,13 C 3.680369,13 1,10.319631 1,7 1,3.680369 3.680369,1 7,1 10,1 11,6.4793944 7,7 3,7.520606 4.084746,13 7,13 z M 7,11 C 6.447715,11 6,10.552284 6,10 6,9.447716 6.447715,9 7,9 7.552285,9 8,9.447716 8,10 8,10.552284 7.552285,11 7,11 z M 7,5 C 7.552285,5 8,4.552285 8,4 8,3.447715 7.552285,3 7,3 6.447715,3 6,3.447715 6,4 6,4.552285 6.447715,5 7,5 z"
-     id="taoist" />
+     d="M 14,28 C 21.716156,28 28,21.661766 28,14 28,6.338234 21.754548,0 14,0 6.245452,0 0,6.27986 0,14 0,21.720142 6.283844,28 14,28 Z m 0,-2 C 7.360738,26 2,20.639262 2,14 2,7.360738 7.360738,2 14,2 c 6,0 8,10.958789 0,12 -8,1.041212 -5.830508,12 0,12 z m 0,-4 c -1.10457,0 -2,-0.895432 -2,-2 0,-1.104568 0.89543,-2 2,-2 1.10457,0 2,0.895432 2,2 0,1.104568 -0.89543,2 -2,2 z m 0,-12 c 1.10457,0 2,-0.89543 2,-2 0,-1.10457 -0.89543,-2 -2,-2 -1.10457,0 -2,0.89543 -2,2 0,1.10457 0.89543,2 2,2 z"
+     id="taoist"
+     style="stroke-width:2" />
 </svg>
