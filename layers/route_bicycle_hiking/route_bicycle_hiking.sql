@@ -12,7 +12,8 @@ RETURNS TABLE(geometry geometry,
             hiking_ref TEXT,
             colour TEXT,
             symbol TEXT,
-            wiki_symbol TEXT
+            wiki_symbol TEXT,
+            scale TEXT
  ) AS $$
     -- etldoc:  osm_route_bicycle_hiking_network_gen_z4 -> layer_route_bicycle_hiking:z4
     SELECT
@@ -27,7 +28,8 @@ RETURNS TABLE(geometry geometry,
         hiking_ref,
         colour,
         symbol,
-        wiki_symbol
+        wiki_symbol,
+        scale
     FROM osm_route_bicycle_hiking_network_gen_z4
     WHERE zoom_level = 4 AND geometry && bbox
     UNION ALL
@@ -45,7 +47,8 @@ RETURNS TABLE(geometry geometry,
         hiking_ref,
         colour,
         symbol,
-        wiki_symbol
+        wiki_symbol,
+        scale
     FROM osm_route_bicycle_hiking_network_gen_z5
     WHERE zoom_level = 5 AND geometry && bbox
     UNION ALL
@@ -63,7 +66,8 @@ RETURNS TABLE(geometry geometry,
         hiking_ref,
         colour,
         symbol,
-        wiki_symbol
+        wiki_symbol,
+        scale
     FROM osm_route_bicycle_hiking_network_gen_z6
     WHERE zoom_level = 6 AND geometry && bbox
     UNION ALL
@@ -81,7 +85,8 @@ RETURNS TABLE(geometry geometry,
         hiking_ref,
         colour,
         symbol,
-        wiki_symbol
+        wiki_symbol,
+        scale
     FROM osm_route_bicycle_hiking_network_gen_z7
     WHERE zoom_level = 7 AND geometry && bbox
     UNION ALL
@@ -99,7 +104,8 @@ RETURNS TABLE(geometry geometry,
         hiking_ref,
         colour,
         symbol,
-        wiki_symbol
+        wiki_symbol,
+        scale
     FROM osm_route_bicycle_hiking_network_gen_z8
     WHERE zoom_level = 8 AND geometry && bbox
     UNION ALL
@@ -117,7 +123,8 @@ RETURNS TABLE(geometry geometry,
         hiking_ref,
         colour,
         symbol,
-        wiki_symbol
+        wiki_symbol,
+        scale
     FROM osm_route_bicycle_hiking_network_gen_z9
     WHERE zoom_level = 9 AND geometry && bbox
     UNION ALL
@@ -135,7 +142,8 @@ RETURNS TABLE(geometry geometry,
         hiking_ref,
         colour,
         symbol,
-        wiki_symbol
+        wiki_symbol,
+        scale
     FROM osm_route_bicycle_hiking_network_gen_z10
     WHERE zoom_level = 10 AND geometry && bbox
     UNION ALL
@@ -153,7 +161,8 @@ RETURNS TABLE(geometry geometry,
         hiking_ref,
         colour,
         symbol,
-        wiki_symbol
+        wiki_symbol,
+        scale
     FROM osm_route_bicycle_hiking_network_gen_z11
     WHERE zoom_level = 11 AND geometry && bbox
     UNION ALL
@@ -171,7 +180,8 @@ RETURNS TABLE(geometry geometry,
         hiking_ref,
         colour,
         symbol,
-        wiki_symbol
+        wiki_symbol,
+        scale
     FROM osm_route_bicycle_hiking_network_gen_z12
     WHERE zoom_level = 12 AND geometry && bbox
     UNION ALL
@@ -190,7 +200,8 @@ RETURNS TABLE(geometry geometry,
         hiking_ref,
         colour,
         symbol,
-        wiki_symbol
+        wiki_symbol,
+        scale
     FROM osm_route_bicycle_hiking_network_merge
     WHERE zoom_level >= 13 AND geometry && bbox
     ;

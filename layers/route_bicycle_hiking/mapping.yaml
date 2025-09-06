@@ -51,3 +51,23 @@ tables:
     - *name
     - *symbol
     - *wiki_symbol
+    - name: scale
+      key: sac_scale
+      type: string
+  via_ferrata_linestring:
+    type: linestring
+    mapping:
+      highway:
+      - via_ferrata
+    columns:
+    - name: osm_id
+      type: id
+    - name: geometry
+      type: geometry
+    - name: route
+      key: highway
+      type: string
+    - *name
+    - name: scale
+      key: via_ferrata_scale
+      type: string
