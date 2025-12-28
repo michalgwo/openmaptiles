@@ -319,6 +319,7 @@ SELECT DISTINCT ON (osm_id, route, relation_id)
     relation_id,
     route,
     network,
+    network_org,
     name,
     ref,
     colour,
@@ -334,6 +335,7 @@ FROM (
         relation_id, 
         route, 
         network_level(network) AS network,
+        network AS network_org,
         name, 
         ref, 
         colour, 
@@ -353,6 +355,7 @@ FROM (
         NULL AS relation_id, 
         route, 
         NULL AS network,
+        NULL AS network_org,
         name, 
         NULL AS ref, 
         NULL AS colour, 
@@ -389,7 +392,11 @@ SELECT
     hiking.network AS hiking_network,
     hiking.name AS hiking_name,
     hiking.ref AS hiking_ref,
+    hiking.network_org AS network,
+    hiking.name AS name,
+    hiking.ref AS ref,
     hiking.colour AS colour,
+    hiking.colour AS color,
     hiking.symbol AS symbol,
     hiking.wiki_symbol AS wiki_symbol,
     hiking.scale AS scale
@@ -412,9 +419,9 @@ FROM osm_border_linestring_union
 WHERE ST_GeometryType(geometry)='ST_LineString';
 
 CREATE OR REPLACE VIEW osm_route_bicycle_hiking_network_union AS
-SELECT ST_Union(h.geometry) as geometry, h.relation_id, h.class, h.bicycle_network, h.bicycle_name, h.bicycle_ref, h.hiking_network, h.hiking_name, h.hiking_ref, h.colour, h.symbol, h.wiki_symbol, h.scale
+SELECT ST_Union(h.geometry) as geometry, h.relation_id, h.class, h.bicycle_network, h.bicycle_name, h.bicycle_ref, h.hiking_network, h.hiking_name, h.hiking_ref, h.network, h.name, h.ref, h.colour, h.color, h.symbol, h.wiki_symbol, h.scale
 FROM osm_route_bicycle_hiking_network h
-GROUP BY h.relation_id, h.class, h.bicycle_network, h.bicycle_name, h.bicycle_ref, h.hiking_network, h.hiking_name, h.hiking_ref, h.colour, h.symbol, h.wiki_symbol, h.scale;
+GROUP BY h.relation_id, h.class, h.bicycle_network, h.bicycle_name, h.bicycle_ref, h.hiking_network, h.hiking_name, h.hiking_ref, h.network, h.name, h.ref, h.colour, h.color, h.symbol, h.wiki_symbol, h.scale;
 
 
 CREATE TABLE IF NOT EXISTS osm_route_bicycle_hiking_network_merge (
@@ -428,7 +435,11 @@ CREATE TABLE IF NOT EXISTS osm_route_bicycle_hiking_network_merge (
     hiking_network integer,
     hiking_name varchar,
     hiking_ref varchar,
+    network varchar,
+    name varchar,
+    ref varchar,
     colour varchar,
+    color varchar,
     symbol varchar,
     wiki_symbol varchar,
     scale varchar
@@ -438,7 +449,7 @@ TRUNCATE osm_route_bicycle_hiking_network_merge;
 
 -- etldoc: osm_route_bicycle_hiking_network -> osm_route_bicycle_hiking_network_merge
 
-INSERT INTO osm_route_bicycle_hiking_network_merge (geometry, relation_id, class, bicycle_network, bicycle_name, bicycle_ref, hiking_network, hiking_name, hiking_ref, colour, symbol, wiki_symbol, scale)
+INSERT INTO osm_route_bicycle_hiking_network_merge (geometry, relation_id, class, bicycle_network, bicycle_name, bicycle_ref, hiking_network, hiking_name, hiking_ref, network, name, ref, colour, color, symbol, wiki_symbol, scale)
 SELECT (ST_Dump(ST_LineMerge(
         CASE 
             WHEN b.geometry IS NOT NULL THEN ST_Intersection(b.geometry, h.geometry)
@@ -453,7 +464,11 @@ SELECT (ST_Dump(ST_LineMerge(
     h.hiking_network,
     h.hiking_name,
     h.hiking_ref,
+    h.network,
+    h.name,
+    h.ref,
     h.colour,
+    h.color,
     h.symbol,
     h.wiki_symbol,
     h.scale
@@ -500,7 +515,11 @@ BEGIN
         hiking_network,
         hiking_name,
         hiking_ref,
+        network,
+        name,
+        ref,
         colour,
+        color,
         symbol,
         wiki_symbol,
         scale
@@ -521,7 +540,11 @@ BEGIN
         hiking_network,
         hiking_name,
         hiking_ref,
+        network,
+        name,
+        ref,
         colour,
+        color,
         symbol,
         wiki_symbol,
         scale
@@ -542,7 +565,11 @@ BEGIN
         hiking_network,
         hiking_name,
         hiking_ref,
+        network,
+        name,
+        ref,
         colour,
+        color,
         symbol,
         wiki_symbol,
         scale
@@ -563,7 +590,11 @@ BEGIN
         hiking_network,
         hiking_name,
         hiking_ref,
+        network,
+        name,
+        ref,
         colour,
+        color,
         symbol,
         wiki_symbol,
         scale
@@ -585,7 +616,11 @@ BEGIN
         hiking_network,
         hiking_name,
         hiking_ref,
+        network,
+        name,
+        ref,
         colour,
+        color,
         symbol,
         wiki_symbol,
         scale
@@ -606,7 +641,11 @@ BEGIN
         hiking_network,
         hiking_name,
         hiking_ref,
+        network,
+        name,
+        ref,
         colour,
+        color,
         symbol,
         wiki_symbol,
         scale
@@ -628,7 +667,11 @@ BEGIN
         hiking_network,
         hiking_name,
         hiking_ref,
+        network,
+        name,
+        ref,
         colour,
+        color,
         symbol,
         wiki_symbol,
         scale
@@ -649,7 +692,11 @@ BEGIN
         hiking_network,
         hiking_name,
         hiking_ref,
+        network,
+        name,
+        ref,
         colour,
+        color,
         symbol,
         wiki_symbol,
         scale
@@ -671,7 +718,11 @@ BEGIN
         hiking_network,
         hiking_name,
         hiking_ref,
+        network,
+        name,
+        ref,
         colour,
+        color,
         symbol,
         wiki_symbol,
         scale
@@ -898,6 +949,7 @@ BEGIN
         geometry,
         route,
         network_level(network) AS network,
+        network AS network_org,
         name,
         ref,
         colour,
@@ -966,7 +1018,11 @@ BEGIN
         hiking.network AS hiking_network,
         hiking.name AS hiking_name,
         hiking.ref AS hiking_ref,
+        hiking.network_org AS network,
+        hiking.name AS name,
+        hiking.ref AS ref,
         hiking.colour AS colour,
+        hiking.colour AS color,
         hiking.symbol AS symbol,
         hiking.wiki_symbol AS wiki_symbol,
         hiking.scale AS scale
@@ -976,7 +1032,7 @@ BEGIN
             bicycle.osm_id = hiking.osm_id
     ;
 
-    INSERT INTO osm_route_bicycle_hiking_network_merge (geometry, relation_id, class, bicycle_network, bicycle_name, bicycle_ref, hiking_network, hiking_name, hiking_ref, colour, symbol, wiki_symbol, scale)
+    INSERT INTO osm_route_bicycle_hiking_network_merge (geometry, relation_id, class, bicycle_network, bicycle_name, bicycle_ref, hiking_network, hiking_name, hiking_ref, network, name, ref, colour, color, symbol, wiki_symbol, scale)
     SELECT (ST_Dump(ST_LineMerge(ST_Union(geometry)))).geom::geometry(Geometry,3857) AS geometry,
         relation_id,
         class,
@@ -986,7 +1042,11 @@ BEGIN
         hiking_network,
         hiking_name,
         hiking_ref,
+        network,
+        name,
+        ref,
         colour,
+        color,
         symbol,
         wiki_symbol,
         scale
@@ -1001,7 +1061,11 @@ BEGIN
         hiking_network,
         hiking_name,
         hiking_ref,
+        network,
+        name,
+        ref,
         colour,
+        color,
         symbol,
         wiki_symbol,
         scale;

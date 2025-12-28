@@ -22,14 +22,26 @@ layer:
           Ref of the major network.
     hiking_network:
       description: |
-          From 1 for international network to 4 for local.
+          From 1 for international network to 4 for local - deprecated
     hiking_name:
       description: |
-          Name of the major network.
+          Name of the major network - deprecated
     hiking_ref:
       description: |
-          Ref of the major network.
+          Ref of the major network - deprecated
+    network:
+      description: |
+          From iwn for international network to lwn for local
+    name:
+      description: |
+          Name of the major network
+    ref:
+      description: |
+          Ref of the major network
     colour:
+      description: |
+          Colour of the trail - deprecated
+    color:
       description: |
           Colour of the trail
     symbol:
@@ -44,7 +56,7 @@ layer:
   datasource:
     geometry_field: geometry
     srid: 900913
-    query: (SELECT geometry, relation_id, class, bicycle_network, bicycle_name, bicycle_ref, hiking_network, hiking_name, hiking_ref, colour, symbol, wiki_symbol, scale FROM layer_route_bicycle_hiking(!bbox!, z(!scale_denominator!))) AS t
+    query: (SELECT geometry, relation_id, class, bicycle_network, bicycle_name, bicycle_ref, hiking_network, hiking_name, hiking_ref, network, name, ref, colour, color, symbol, wiki_symbol, scale FROM layer_route_bicycle_hiking(!bbox!, z(!scale_denominator!))) AS t
 schema:
   - ./update_route_bicycle_hiking_merge.sql
   - ./route_bicycle_hiking.sql
