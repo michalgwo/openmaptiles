@@ -305,6 +305,8 @@ BEGIN
         return -1473946;
     elsif (rb_url LIKE '%asia/palestine%') then
         return -13283819;
+    elsif (rb_url LIKE '%asia/israel-and-palestine%') then
+        return -6195356;
     else 
         return 0;
     end if;
