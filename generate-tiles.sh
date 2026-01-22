@@ -1,7 +1,10 @@
 #!/bin/bash
+set -euo pipefail
 
 osm_continent=$1
 osm_country=$2
+osm_region=""
+import_data=""
 
 if [ $# -gt 2 ]; then
     if [ "$3" = "true" ]; then
