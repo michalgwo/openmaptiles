@@ -1,0 +1,40 @@
+symbol_field: &access_conditional
+  key: access:conditional
+  name: access_conditional
+  type: string
+wiki_symbol_field: &foot_conditional
+  key: foot:conditional
+  name: foot_conditional
+  type: string
+symbol_field: &access
+  key: access
+  name: access
+  type: string
+wiki_symbol_field: &foot
+  key: foot
+  name: foot
+  type: string
+
+tables:
+  access_restrictions_linestring:
+    type: linestring
+    filters:
+      require:
+        highway: ['path', 'footway', 'track', 'steps', 'pedestrian']
+    mapping:
+      access:conditional: [__any__]
+      foot:conditional: [__any__]
+      access: [__any__]
+      foot: [__any__]
+    columns:
+    - name: osm_id
+      type: id
+    - name: geometry
+      type: geometry
+    - name: highway
+      key: highway
+      type: string
+    - *access_conditional
+    - *foot_conditional
+    - *access
+    - *foot

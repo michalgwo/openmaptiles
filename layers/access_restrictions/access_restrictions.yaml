@@ -1,0 +1,40 @@
+layer:
+  id: "access_restrictions"
+  description: |
+      **highway** contains highway osm tag
+  buffer_size: 4
+  srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  fields:
+    type:
+      description: |
+          type of the restriction line/start/end.
+    osm_id:
+      description: |
+          Id of the osm object
+    highway:
+      description: |
+          highway osm tag.
+    no_foot_access_condition_start:
+      description: |
+          access:conditional osm tag - second part (condition)
+    no_foot_access_condition_end:
+      description: |
+          access:conditional osm tag - second part (condition)
+    no_foot_access_condition_cross_year:
+      description: |
+          access:conditional osm tag cross year true/false
+    foot_access_condition_other:
+      description: |
+          access:conditional osm tag - second part (condition)
+    foot_access:
+      description: |
+          access osm tag.
+  datasource:
+    geometry_field: geometry
+    srid: 900913
+    query: (SELECT geometry, type, osm_id, highway, no_foot_access_condition_start, no_foot_access_condition_end, no_foot_access_condition_cross_year, foot_access_condition_other, foot_access FROM layer_access_restrictions(!bbox!, z(!scale_denominator!))) AS t
+schema:
+  - ./access_restrictions.sql
+datasources:
+  - type: imposm3
+    mapping_file: ./mapping.yaml
