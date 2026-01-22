@@ -496,10 +496,6 @@ CREATE TABLE IF NOT EXISTS osm_route_bicycle_hiking_network_gen_z7
     (LIKE osm_route_bicycle_hiking_network_gen_z8);
 CREATE TABLE IF NOT EXISTS osm_route_bicycle_hiking_network_gen_z6
     (LIKE osm_route_bicycle_hiking_network_gen_z7);
-CREATE TABLE IF NOT EXISTS osm_route_bicycle_hiking_network_gen_z5
-    (LIKE osm_route_bicycle_hiking_network_gen_z6);
-CREATE TABLE IF NOT EXISTS osm_route_bicycle_hiking_network_gen_z4
-    (LIKE osm_route_bicycle_hiking_network_gen_z5);
 
 
 CREATE OR REPLACE FUNCTION insert_route_bicycle_hiking_network_gen(update_id bigint) RETURNS void AS
@@ -681,58 +677,6 @@ BEGIN
     WHERE
         (update_id IS NULL OR id = update_id) AND
         ST_Length(geometry) > 2000;
-
-    -- etldoc: osm_route_bicycle_hiking_network_gen_z6 -> osm_route_bicycle_hiking_network_gen_z5
-    INSERT INTO osm_route_bicycle_hiking_network_gen_z5
-    SELECT ST_Simplify(geometry, ZRes(7)) AS geometry,
-        id,
-        relation_id,
-        class,
-        bicycle_network,
-        bicycle_name,
-        bicycle_ref,
-        hiking_network,
-        hiking_name,
-        hiking_ref,
-        network,
-        name,
-        ref,
-        colour,
-        color,
-        symbol,
-        wiki_symbol,
-        scale
-    FROM osm_route_bicycle_hiking_network_gen_z6
-    WHERE
-        (update_id IS NULL OR id = update_id) AND
-        ST_Length(geometry) > 2000 AND
-        least(bicycle_network, hiking_network) <= 2;
-
-    -- etldoc: osm_route_bicycle_hiking_network_gen_z5 -> osm_route_bicycle_hiking_network_gen_z4
-    INSERT INTO osm_route_bicycle_hiking_network_gen_z4
-    SELECT ST_Simplify(geometry, ZRes(6)) AS geometry,
-        id,
-        relation_id,
-        class,
-        bicycle_network,
-        bicycle_name,
-        bicycle_ref,
-        hiking_network,
-        hiking_name,
-        hiking_ref,
-        network,
-        name,
-        ref,
-        colour,
-        color,
-        symbol,
-        wiki_symbol,
-        scale
-    FROM osm_route_bicycle_hiking_network_gen_z5
-    WHERE
-        (update_id IS NULL OR id = update_id) AND
-        ST_Length(geometry) > 2000 AND
-        least(bicycle_network, hiking_network) <= 1;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -743,8 +687,6 @@ TRUNCATE osm_route_bicycle_hiking_network_gen_z9;
 TRUNCATE osm_route_bicycle_hiking_network_gen_z8;
 TRUNCATE osm_route_bicycle_hiking_network_gen_z7;
 TRUNCATE osm_route_bicycle_hiking_network_gen_z6;
-TRUNCATE osm_route_bicycle_hiking_network_gen_z5;
-TRUNCATE osm_route_bicycle_hiking_network_gen_z4;
 
 SELECT insert_route_bicycle_hiking_network_gen(NULL);
 
@@ -782,16 +724,6 @@ CREATE INDEX IF NOT EXISTS osm_route_bicycle_hiking_network_gen_z6_geometry_idx
     ON osm_route_bicycle_hiking_network_gen_z6 USING gist(geometry);
 CREATE INDEX IF NOT EXISTS osm_route_bicycle_hiking_network_gen_z6_id_idx
     ON osm_route_bicycle_hiking_network_gen_z6(id);
-
-CREATE INDEX IF NOT EXISTS osm_route_bicycle_hiking_network_gen_z5_geometry_idx
-    ON osm_route_bicycle_hiking_network_gen_z5 USING gist(geometry);
-CREATE INDEX IF NOT EXISTS osm_route_bicycle_hiking_network_gen_z5_id_idx
-    ON osm_route_bicycle_hiking_network_gen_z5(id);
-
-CREATE INDEX IF NOT EXISTS osm_route_bicycle_hiking_network_gen_z4_geometry_idx
-    ON osm_route_bicycle_hiking_network_gen_z4 USING gist(geometry);
-CREATE INDEX IF NOT EXISTS osm_route_bicycle_hiking_network_gen_z4_id_idx
-    ON osm_route_bicycle_hiking_network_gen_z4(id);
 
 
 -- Handle updates
@@ -1098,7 +1030,6 @@ BEGIN
         DELETE FROM osm_route_bicycle_hiking_network_gen_z8 WHERE id = old.id;
         DELETE FROM osm_route_bicycle_hiking_network_gen_z7 WHERE id = old.id;
         DELETE FROM osm_route_bicycle_hiking_network_gen_z6 WHERE id = old.id;
-        DELETE FROM osm_route_bicycle_hiking_network_gen_z5 WHERE id = old.id;
     END IF;
 
     IF (tg_op = 'UPDATE' OR tg_op = 'INSERT') THEN

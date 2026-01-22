@@ -1,5 +1,5 @@
 -- etldoc: layer_route_bicycle_hiking[shape=record fillcolor=lightpink, style="rounded,filled",
--- etldoc:     label="<sql> layer_route_bicycle_hiking |<z4> z4 |<z5> z5 |<z6> z6 |<z7> z7 |<z8> z8 |<z9> z9 |<z10> z10 |<z11> z11 |<z12> z12|<z13> z13|<z14_> z14+" ] ;
+-- etldoc:     label="<sql> layer_route_bicycle_hiking |<z6> z6 |<z7> z7 |<z8> z8 |<z9> z9 |<z10> z10 |<z11> z11 |<z12> z12|<z13> z13|<z14_> z14+" ] ;
 CREATE OR REPLACE FUNCTION layer_route_bicycle_hiking(bbox geometry, zoom_level int)
 RETURNS TABLE(geometry geometry, 
             relation_id BIGINT,
@@ -19,52 +19,6 @@ RETURNS TABLE(geometry geometry,
             wiki_symbol TEXT,
             scale TEXT
  ) AS $$
-    -- etldoc:  osm_route_bicycle_hiking_network_gen_z4 -> layer_route_bicycle_hiking:z4
-    SELECT
-        geometry,
-        relation_id,
-        class,
-        bicycle_network,
-        bicycle_name,
-        bicycle_ref,
-        hiking_network,
-        hiking_name,
-        hiking_ref,
-        network,
-        name,
-        ref,
-        colour,
-        color,
-        symbol,
-        wiki_symbol,
-        scale
-    FROM osm_route_bicycle_hiking_network_gen_z4
-    WHERE zoom_level = 4 AND geometry && bbox
-    UNION ALL
-
-    -- etldoc:  osm_route_bicycle_hiking_network_gen_z5 -> layer_route_bicycle_hiking:z5
-    SELECT
-        geometry,
-        relation_id,
-        class,
-        bicycle_network,
-        bicycle_name,
-        bicycle_ref,
-        hiking_network,
-        hiking_name,
-        hiking_ref,
-        network,
-        name,
-        ref,
-        colour,
-        color,
-        symbol,
-        wiki_symbol,
-        scale
-    FROM osm_route_bicycle_hiking_network_gen_z5
-    WHERE zoom_level = 5 AND geometry && bbox
-    UNION ALL
-
     -- etldoc:  osm_route_bicycle_hiking_network_gen_z6 -> layer_route_bicycle_hiking:z6
     SELECT
         geometry,
