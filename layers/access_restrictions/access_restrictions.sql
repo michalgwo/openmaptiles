@@ -22,11 +22,15 @@ BEGIN
     RETURN NULL;
   END IF;
 
-  IF trim(split_part(conditional, '@', 1)) IN ('no', 'private', 'agricultural', 'forestry', 'delivery', 'military', 'permit') THEN
-    start_date := to_date(m[1] || ' ' || m[2] || ' 2025', 'Mon DD YYYY');
-  ELSE
-    start_date := to_date(m[3] || ' ' || m[4] || ' 2025', 'Mon DD YYYY') + 1;
-  END IF;
+  BEGIN
+    IF trim(split_part(conditional, '@', 1)) IN ('no', 'private', 'agricultural', 'forestry', 'delivery', 'military', 'permit') THEN
+      start_date := to_date(m[1] || ' ' || m[2] || ' 2025', 'Mon DD YYYY');
+    ELSE
+      start_date := to_date(m[3] || ' ' || m[4] || ' 2025', 'Mon DD YYYY') + 1;
+    END IF;
+  EXCEPTION WHEN datetime_field_overflow THEN
+    RETURN NULL;
+  END;
 
   -- Reject impossible dates like Feb 30
   IF start_date IS NULL THEN
@@ -62,11 +66,15 @@ BEGIN
     RETURN NULL;
   END IF;
 
-  IF trim(split_part(conditional, '@', 1)) IN ('no', 'private', 'agricultural', 'forestry', 'delivery', 'military', 'permit') THEN
-    end_date := to_date(m[3] || ' ' || m[4] || ' 2025', 'Mon DD YYYY');
-  ELSE
-    end_date := to_date(m[1] || ' ' || m[2] || ' 2025', 'Mon DD YYYY') - 1;
-  END IF;
+  BEGIN
+    IF trim(split_part(conditional, '@', 1)) IN ('no', 'private', 'agricultural', 'forestry', 'delivery', 'military', 'permit') THEN
+      end_date := to_date(m[3] || ' ' || m[4] || ' 2025', 'Mon DD YYYY');
+    ELSE
+      end_date := to_date(m[1] || ' ' || m[2] || ' 2025', 'Mon DD YYYY') - 1;
+    END IF;
+  EXCEPTION WHEN datetime_field_overflow THEN
+    RETURN NULL;
+  END;
 
   -- Reject impossible dates like Feb 30
   IF end_date IS NULL THEN
@@ -106,17 +114,22 @@ BEGIN
 
   is_no_access := trim(split_part(conditional, '@', 1)) IN ('no', 'private', 'agricultural', 'forestry', 'delivery', 'military', 'permit');
 
-  IF is_no_access THEN
-    start_date := to_date(m[1] || ' ' || m[2] || ' 2025', 'Mon DD YYYY');
-  ELSE
-    start_date := to_date(m[3] || ' ' || m[4] || ' 2025', 'Mon DD YYYY') + 1;
-  END IF;
 
-  IF is_no_access THEN
-    end_date := to_date(m[3] || ' ' || m[4] || ' 2025', 'Mon DD YYYY');
-  ELSE
-    end_date := to_date(m[1] || ' ' || m[2] || ' 2025', 'Mon DD YYYY') - 1;
-  END IF;
+  BEGIN
+    IF is_no_access THEN
+      start_date := to_date(m[1] || ' ' || m[2] || ' 2025', 'Mon DD YYYY');
+    ELSE
+      start_date := to_date(m[3] || ' ' || m[4] || ' 2025', 'Mon DD YYYY') + 1;
+    END IF;
+
+    IF is_no_access THEN
+      end_date := to_date(m[3] || ' ' || m[4] || ' 2025', 'Mon DD YYYY');
+    ELSE
+      end_date := to_date(m[1] || ' ' || m[2] || ' 2025', 'Mon DD YYYY') - 1;
+    END IF;
+  EXCEPTION WHEN datetime_field_overflow THEN
+    RETURN NULL;
+  END;
 
   -- Reject impossible dates like Feb 30
   IF end_date IS NULL OR start_date IS NULL THEN
