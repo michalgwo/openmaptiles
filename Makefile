@@ -432,6 +432,15 @@ import-osm: all start-db-nowait
 	$(DOCKER_COMPOSE) $(DC_CONFIG_CACHE) run $(DC_OPTS_CACHE) openmaptiles-tools sh -c 'pgwait && import-osm $(PBF_FILE)'
 	osm2pgsql $(PBF_FILE) -d postgresql://openmaptiles:openmaptiles@localhost:5432/openmaptiles --output=flex --style=../osm2pgsql/flex-config/trails.lua
 
+.PHONY: import-osm-outdoor
+import-osm-outdoor: all start-db-nowait
+	@$(assert_area_is_given)
+	$(DOCKER_COMPOSE) $(DC_CONFIG_CACHE) run $(DC_OPTS_CACHE) openmaptiles-tools sh -c 'pgwait && import-osm $(PBF_FILE)'
+	osmium tags-filter $(PBF_FILE) r/route=hiking r/route=foot -o data/routes.osm.pbf
+	osm2pgsql data/routes.osm.pbf -d postgresql://openmaptiles:openmaptiles@localhost:5432/openmaptiles --output=flex --style=../osm2pgsql/flex-config/trails.lua --slim
+	rm data/routes.osm.pbf
+
+
 .PHONY: import-trails
 import-trails: all start-db-nowait
 	@$(assert_area_is_given)
