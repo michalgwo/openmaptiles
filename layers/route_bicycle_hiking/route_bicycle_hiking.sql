@@ -157,28 +157,28 @@ RETURNS TABLE(geometry geometry,
     WHERE zoom_level = 11 AND geometry && bbox
     UNION ALL
 
-    -- -- etldoc:  osm_route_bicycle_hiking_network_gen_z12 -> layer_route_bicycle_hiking:z12
-    -- SELECT
-    --     geometry,
-    --     relation_id,
-    --     class,
-    --     bicycle_network,
-    --     bicycle_name,
-    --     bicycle_ref,
-    --     hiking_network,
-    --     hiking_name,
-    --     hiking_ref,
-    --     network,
-    --     name,
-    --     ref,
-    --     colour,
-    --     color,
-    --     symbol,
-    --     wiki_symbol,
-    --     scale
-    -- FROM osm_route_bicycle_hiking_network_gen_z12
-    -- WHERE zoom_level = 12 AND geometry && bbox
-    -- UNION ALL
+    -- etldoc:  osm_route_bicycle_hiking_network_gen_z12 -> layer_route_bicycle_hiking:z12
+    SELECT
+        geometry,
+        relation_id,
+        class,
+        bicycle_network,
+        bicycle_name,
+        bicycle_ref,
+        hiking_network,
+        hiking_name,
+        hiking_ref,
+        network,
+        name,
+        ref,
+        colour,
+        color,
+        symbol,
+        wiki_symbol,
+        scale
+    FROM osm_route_bicycle_hiking_network_gen_z12
+    WHERE zoom_level = 12 AND geometry && bbox
+    UNION ALL
 
     -- etldoc:  osm_route_bicycle_hiking_network_merge -> layer_route_bicycle_hiking:z13
     -- etldoc:  osm_route_bicycle_hiking_network_merge -> layer_route_bicycle_hiking:z14_
@@ -201,7 +201,7 @@ RETURNS TABLE(geometry geometry,
         wiki_symbol,
         scale
     FROM osm_route_bicycle_hiking_network_merge
-    WHERE zoom_level = 12 AND geometry && bbox
+    WHERE zoom_level >= 13 AND geometry && bbox
     ;
 $$ LANGUAGE SQL STABLE
                 -- STRICT
