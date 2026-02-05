@@ -13,6 +13,16 @@ DROP TABLE IF EXISTS simplify_vw_z11 CASCADE;
 DROP TABLE IF EXISTS simplify_vw_z12 CASCADE;
 DROP TABLE IF EXISTS simplify_vw_z13 CASCADE;
 
+DROP TABLE IF EXISTS region_check;
+
+CREATE TEMP TABLE region_check AS
+SELECT EXISTS (
+    SELECT 1 
+    FROM osm2pgsql_properties 
+    WHERE property = 'replication_base_url' 
+    AND value LIKE '%north-america/us%'
+) AS is_us;
+
 -- etldoc: osm_landcover_polygon ->  simplify_vw_z13
 CREATE TABLE simplify_vw_z13 AS
 (
@@ -21,7 +31,11 @@ CREATE TABLE simplify_vw_z13 AS
             ST_SnapToGrid(
              ST_SimplifyVW(geometry, power(zres(13),2)),
              0.001)) AS geometry
-    FROM osm_landcover_polygon
+    FROM (
+        SELECT 'wood' as subclass, geometry FROM usgs_woodland CROSS JOIN region_check WHERE region_check.is_us
+        UNION ALL
+        SELECT subclass, geometry  FROM osm_landcover_polygon CROSS JOIN region_check WHERE NOT region_check.is_us
+    ) AS source_data
     WHERE ST_Area(geometry) > power(zres(12),2)
 );
 CREATE INDEX ON simplify_vw_z13 USING GIST (geometry);

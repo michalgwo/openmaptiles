@@ -23,6 +23,9 @@ make
 
 if [ -n "$osm_region" ]; then
     make download area=${osm_continent}/${osm_country}/${osm_region}
+    if [ "$osm_country" = "us" ]; then
+        ./import-us-woodlands.sh $osm_region
+    fi
 else
     make download area=${osm_continent}/${osm_country}
 fi
