@@ -229,7 +229,7 @@ WITH base AS (
             AS foot_access
     FROM osm_access_restrictions_linestring
     WHERE geometry && bbox
-      AND zoom_level >= 12
+      AND zoom_level >= 14
 ),
 filtered AS (
     SELECT *
