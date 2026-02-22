@@ -373,9 +373,11 @@ FROM (
          SELECT geometry, 
                 subclass
          FROM (
-            SELECT 'wood' as subclass, geometry FROM usgs_woodland CROSS JOIN region_check WHERE region_check.is_us
+            SELECT geometry, 'wood' as subclass FROM usgs_woodland CROSS JOIN region_check WHERE region_check.is_us
             UNION ALL
-            SELECT subclass, geometry  FROM osm_landcover_polygon CROSS JOIN region_check WHERE NOT region_check.is_us
+            SELECT geometry, subclass FROM osm_landcover_polygon CROSS JOIN region_check WHERE
+                (region_check.is_us AND subclass != 'wood' AND subclass != 'forest') OR 
+                NOT region_check.is_us
          ) AS source_data
          WHERE zoom_level >= 14
            AND geometry && bbox

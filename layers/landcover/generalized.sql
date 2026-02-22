@@ -23,6 +23,32 @@ SELECT EXISTS (
     AND value LIKE '%north-america/us%'
 ) AS is_us;
 
+DO $$ 
+BEGIN
+    IF NOT EXISTS (
+        SELECT * FROM information_schema.tables 
+        WHERE table_name = 'usgs_woodland'
+    ) THEN
+        EXECUTE 'CREATE TABLE usgs_woodland AS 
+                 SELECT 
+                    ST_GeomFromText(''POLYGON EMPTY'')::geometry AS geometry,
+                    NULL::int4 AS objectid,
+                    NULL::varchar AS permanent_identifier,
+                    NULL::varchar AS source_featureid,
+                    NULL::varchar AS source_datasetid,
+                    NULL::varchar AS source_datadesc,
+                    NULL::varchar AS source_originator,
+                    NULL::int2 AS data_security,
+                    NULL::varchar AS distribution_policy,
+                    NULL::timestamptz AS loaddate,
+                    NULL::int4 AS fcode,
+                    NULL::varchar AS globalid,
+                    NULL::float8 AS shape_length,
+                    NULL::float8 AS shape_area
+                 WHERE FALSE';
+    END IF;
+END $$;
+
 -- etldoc: osm_landcover_polygon ->  simplify_vw_z13
 CREATE TABLE simplify_vw_z13 AS
 (
@@ -34,7 +60,9 @@ CREATE TABLE simplify_vw_z13 AS
     FROM (
         SELECT 'wood' as subclass, geometry FROM usgs_woodland CROSS JOIN region_check WHERE region_check.is_us
         UNION ALL
-        SELECT subclass, geometry  FROM osm_landcover_polygon CROSS JOIN region_check WHERE NOT region_check.is_us
+        SELECT subclass, geometry  FROM osm_landcover_polygon CROSS JOIN region_check WHERE
+                (region_check.is_us AND subclass != 'wood' AND subclass != 'forest') OR 
+                NOT region_check.is_us
     ) AS source_data
     WHERE ST_Area(geometry) > power(zres(12),2)
 );
