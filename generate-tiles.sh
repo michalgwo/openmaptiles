@@ -5,13 +5,20 @@ osm_continent=$1
 osm_country=$2
 osm_region=""
 import_data=""
+slim=""
 
 if [ $# -gt 2 ]; then
     if [ "$3" = "true" ]; then
         import_data=true
+    elif [ "$3" = "slim" ]; then
+        slim=true
     else
         if [ $# -eq 4 ]; then
-            import_data=true
+            if [ "$4" = "true" ]; then
+                import_data=true
+            elif [ "$4" = "slim" ]; then
+                slim=true
+            fi
         fi
         osm_region=$3
     fi
@@ -35,7 +42,13 @@ if [ -n "$import_data" ]; then
     make import-data
 fi
 
-make import-osm
+
+if [ -n "$slim" ]; then
+    make import-osm slim=yes
+else
+    make import-osm
+fi
+
 make import-wikidata
 make import-sql
 make generate-tiles-pg
