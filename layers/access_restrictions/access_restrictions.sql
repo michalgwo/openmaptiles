@@ -285,4 +285,4 @@ SELECT
 FROM filtered
 
 $$ LANGUAGE SQL STABLE
-                PARALLEL SAFE;
+                PARALLEL UNSAFE;
