@@ -165,6 +165,72 @@ BEGIN
         return -2171347;
     elsif (rb_url LIKE '%europe/liechtenstein%') then
         return -1155955;
+    elsif (rb_url LIKE '%europe/hungary%') then
+        return -21335;
+    elsif (rb_url LIKE '%europe/romania%') then
+        return -90689;
+    elsif (rb_url LIKE '%europe/bulgaria%') then
+        return -186382;
+    elsif (rb_url LIKE '%europe/greece%') then
+        return -192307;
+    elsif (rb_url LIKE '%europe/cyprus%') then
+        return -307787;
+    elsif (rb_url LIKE '%europe/slovenia%') then
+        return -218657;
+    elsif (rb_url LIKE '%europe/france/alsace%') then
+        return -8636;
+    elsif (rb_url LIKE '%europe/france/aquitaine%') then
+        return -8637;
+    elsif (rb_url LIKE '%europe/france/auvergne%') then
+        return -8638;
+    elsif (rb_url LIKE '%europe/france/basse-normandie%') then
+        return -8646;
+    elsif (rb_url LIKE '%europe/france/bourgogne%') then
+        return -27768;
+    elsif (rb_url LIKE '%europe/france/bretagne%') then
+        return -102740;
+    elsif (rb_url LIKE '%europe/france/centre%') then
+        return -8640;
+    elsif (rb_url LIKE '%europe/france/champagne-ardenne%') then
+        return -8641;
+    elsif (rb_url LIKE '%europe/france/corse%') then
+        return -7112309;
+    elsif (rb_url LIKE '%europe/france/franche-comte%') then
+        return -8642;
+    elsif (rb_url LIKE '%europe/france/guadeloupe%') then
+        return -2562137;
+    elsif (rb_url LIKE '%europe/france/guyane%') then
+        return -1260551;
+    elsif (rb_url LIKE '%europe/france/haute-normandie%') then
+        return -8656;
+    elsif (rb_url LIKE '%europe/france/ile-de-france%') then
+        return -8649;
+    elsif (rb_url LIKE '%europe/france/languedoc-roussillon%') then
+        return -8643;
+    elsif (rb_url LIKE '%europe/france/limousin%') then
+        return -8644;
+    elsif (rb_url LIKE '%europe/france/lorraine%') then
+        return -8645;
+    elsif (rb_url LIKE '%europe/france/martinique%') then
+        return -2473088;
+    elsif (rb_url LIKE '%europe/france/mayotte%') then
+        return -1363069;
+    elsif (rb_url LIKE '%europe/france/midi-pyrenees%') then
+        return -8647;
+    elsif (rb_url LIKE '%europe/france/nord-pas-de-calais%') then
+        return -8648;
+    elsif (rb_url LIKE '%europe/france/pays-de-la-loire%') then
+        return -8650;
+    elsif (rb_url LIKE '%europe/france/picardie%') then
+        return -8651;
+    elsif (rb_url LIKE '%europe/france/poitou-charentes%') then
+        return -8652;
+    elsif (rb_url LIKE '%europe/france/provence-alpes-cote-d-azur%') then
+        return -8654;
+    elsif (rb_url LIKE '%europe/france/reunion%') then
+        return -2470060;
+    elsif (rb_url LIKE '%europe/france/rhone-alpes%') then
+        return -8655;
     elsif (rb_url LIKE '%australia-oceania/australia%') then
         return -80500;
     elsif (rb_url LIKE '%australia-oceania/new-zealand%') then
@@ -307,6 +373,14 @@ BEGIN
         return -13283819;
     elsif (rb_url LIKE '%asia/israel-and-palestine%') then
         return -6195356;
+    elsif (rb_url LIKE '%asia/south-korea%') then
+        return -307756;
+    elsif (rb_url LIKE '%asia/taiwan%') then
+        return -449220;
+    elsif (rb_url LIKE '%asia/jordan%') then
+        return -184818;
+    elsif (rb_url LIKE '%asia/lebanon%') then
+        return -184843;
     else 
         return 0;
     end if;
