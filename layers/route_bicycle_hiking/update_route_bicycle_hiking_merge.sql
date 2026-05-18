@@ -231,6 +231,40 @@ BEGIN
         return -2470060;
     elsif (rb_url LIKE '%europe/france/rhone-alpes%') then
         return -8655;
+    elsif (rb_url LIKE '%europe/italy/centro%') then
+        return -17518200;
+    elsif (rb_url LIKE '%europe/italy/isole%') then
+        return -17514223;
+    elsif (rb_url LIKE '%europe/italy/nord-est%') then
+        return -17518337;
+    elsif (rb_url LIKE '%europe/italy/nord-ovest%') then
+        return -17518295;
+    elsif (rb_url LIKE '%europe/italy/sud%') then
+        return -17514288;
+    elsif (rb_url LIKE '%europe/netherlands/drenthe%') then
+        return -47540;
+    elsif (rb_url LIKE '%europe/netherlands/flevoland%') then
+        return -47407;
+    elsif (rb_url LIKE '%europe/netherlands/friesland%') then
+        return -47381;
+    elsif (rb_url LIKE '%europe/netherlands/gelderland%') then
+        return -47554;
+    elsif (rb_url LIKE '%europe/netherlands/groningen%') then
+        return -47826;
+    elsif (rb_url LIKE '%europe/netherlands/limburg%') then
+        return -47793;
+    elsif (rb_url LIKE '%europe/netherlands/noord-brabant%') then
+        return -47696;
+    elsif (rb_url LIKE '%europe/netherlands/noord-holland%') then
+        return -47654;
+    elsif (rb_url LIKE '%europe/netherlands/overijssel%') then
+        return -47608;
+    elsif (rb_url LIKE '%europe/netherlands/utrecht%') then
+        return -47667;
+    elsif (rb_url LIKE '%europe/netherlands/zeeland%') then
+        return -47806;
+    elsif (rb_url LIKE '%europe/netherlands/zuid-holland%') then
+        return -47772;
     elsif (rb_url LIKE '%australia-oceania/australia%') then
         return -80500;
     elsif (rb_url LIKE '%australia-oceania/new-zealand%') then
@@ -381,6 +415,22 @@ BEGIN
         return -184818;
     elsif (rb_url LIKE '%asia/lebanon%') then
         return -184843;
+    elsif (rb_url LIKE '%asia/japan/chubu%') then
+        return -532759;
+    elsif (rb_url LIKE '%asia/japan/chugoku%') then
+        return -1842114;
+    elsif (rb_url LIKE '%asia/japan/hokkaido%') then
+        return -3792634;
+    elsif (rb_url LIKE '%asia/japan/kansai%') then
+        return -357113;
+    elsif (rb_url LIKE '%asia/japan/kanto%') then
+        return -1803923;
+    elsif (rb_url LIKE '%asia/japan/kyushu%') then
+        return -1842245;
+    elsif (rb_url LIKE '%asia/japan/shikoku%') then
+        return -1847663;
+    elsif (rb_url LIKE '%asia/japan/tohoku%') then
+        return -1835900;
     else 
         return 0;
     end if;
