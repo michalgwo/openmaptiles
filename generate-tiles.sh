@@ -56,7 +56,11 @@ make generate-tiles-pg
 if [ "$osm_region" == "georgia" ] && [ "$osm_country" == "us" ]; then
     tile-join -pk -o /mnt/d/nailthetrail/mbtiles/${osm_continent}/${osm_country}/${osm_region}.mbtiles data/tiles.mbtiles ../opencontourmaptiles/data/${osm_region}-us.mbtiles
 elif [ -n "$osm_region" ]; then
-    tile-join -pk -o /mnt/d/nailthetrail/mbtiles/${osm_continent}/${osm_country}/${osm_region}.mbtiles data/tiles.mbtiles ../opencontourmaptiles/data/${osm_region}.mbtiles
+    if [ "$osm_region" == "flevoland" ]; then
+        cp data/tiles.mbtiles /mnt/d/nailthetrail/mbtiles/${osm_continent}/${osm_country}/${osm_region}.mbtiles
+    else
+        tile-join -pk -o /mnt/d/nailthetrail/mbtiles/${osm_continent}/${osm_country}/${osm_region}.mbtiles data/tiles.mbtiles ../opencontourmaptiles/data/${osm_region}.mbtiles
+    fi
 else
     tile-join -pk -o /mnt/d/nailthetrail/mbtiles/${osm_continent}/${osm_country}.mbtiles data/tiles.mbtiles ../opencontourmaptiles/data/${osm_country}.mbtiles
 fi
