@@ -177,6 +177,8 @@ BEGIN
         return -307787;
     elsif (rb_url LIKE '%europe/slovenia%') then
         return -218657;
+    elsif (rb_url LIKE '%europe/belgium%') then
+        return -52411;
     elsif (rb_url LIKE '%europe/france/alsace%') then
         return -8636;
     elsif (rb_url LIKE '%europe/france/aquitaine%') then
