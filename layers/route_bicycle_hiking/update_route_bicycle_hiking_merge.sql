@@ -403,12 +403,12 @@ BEGIN
         return -165466;
     elsif (rb_url LIKE '%north-america/us/wyoming%') then
         return -161991;
+    elsif (rb_url LIKE '%asia/israel-and-palestine%') then
+        return -6195356;
     elsif (rb_url LIKE '%asia/israel%') then
         return -1473946;
     elsif (rb_url LIKE '%asia/palestine%') then
         return -13283819;
-    elsif (rb_url LIKE '%asia/israel-and-palestine%') then
-        return -6195356;
     elsif (rb_url LIKE '%asia/south-korea%') then
         return -307756;
     elsif (rb_url LIKE '%asia/taiwan%') then
