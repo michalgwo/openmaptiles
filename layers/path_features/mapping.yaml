@@ -1,0 +1,21 @@
+tables:
+  path_features_linestring:
+    type: linestring
+    mapping:
+      assisted_trail: [__any__]
+      safety_rope: [__any__]
+      rungs: [__any__]
+    columns:
+    - name: osm_id
+      type: id
+    - name: geometry
+      type: geometry
+    - name: assisted_trail
+      key: assisted_trail
+      type: string
+    - name: safety_rope
+      key: safety_rope
+      type: string
+    - name: rungs
+      key: rungs
+      type: string

@@ -2,6 +2,8 @@ tileset:
   layers:
     - layers/route_bicycle_hiking/route_bicycle_hiking.yaml
     - layers/outdoor_poi/outdoor_poi.yaml
+    - layers/outdoor_name/outdoor_name.yaml
+    - layers/path_features/path_features.yaml
     - layers/access_restrictions/access_restrictions.yaml
   name: OpenMapTiles
   version: 3.15.0

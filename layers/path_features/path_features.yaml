@@ -1,0 +1,22 @@
+layer:
+  id: "path_features"
+  description: |
+      **path_features**
+  buffer_size: 4
+  srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  fields:
+    osm_id:
+      description: |
+          Id of the osm object
+    assisted_trail:
+      description: |
+          assisted_trail osm tag.
+  datasource:
+    geometry_field: geometry
+    srid: 900913
+    query: (SELECT geometry, osm_id, assisted_trail FROM layer_path_features(!bbox!, z(!scale_denominator!))) AS t
+schema:
+  - ./path_features.sql
+datasources:
+  - type: imposm3
+    mapping_file: ./mapping.yaml
