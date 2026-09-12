@@ -179,6 +179,40 @@ BEGIN
         return -218657;
     elsif (rb_url LIKE '%europe/belgium%') then
         return -52411;
+    elsif (rb_url LIKE '%europe/iceland%') then
+        return -299133;
+    elsif (rb_url LIKE '%europe/sweden%') then
+        return -52822;
+    elsif (rb_url LIKE '%europe/finland%') then
+        return -54224;
+    elsif (rb_url LIKE '%europe/denmark%') then
+        return -50046;
+    elsif (rb_url LIKE '%europe/lithuania%') then
+        return -72596;
+    elsif (rb_url LIKE '%europe/latvia%') then
+        return -72594;
+    elsif (rb_url LIKE '%europe/estonia%') then
+        return -79510;
+    elsif (rb_url LIKE '%europe/moldova%') then
+        return -58974;
+    elsif (rb_url LIKE '%europe/croatia%') then
+        return -214885;
+    elsif (rb_url LIKE '%europe/serbia%') then
+        return -1741311;
+    elsif (rb_url LIKE '%europe/kosovo%') then
+        return -2088990;
+    elsif (rb_url LIKE '%europe/bosnia-herzegovina%') then
+        return -2528142;
+    elsif (rb_url LIKE '%europe/montenegro%') then
+        return -53296;
+    elsif (rb_url LIKE '%europe/albania%') then
+        return -53292;
+    elsif (rb_url LIKE '%europe/macedonia%') then
+        return -53293;
+    elsif (rb_url LIKE '%europe/malta%') then
+        return -365307;
+    elsif (rb_url LIKE '%europe/andorra%') then
+        return -9407;
     elsif (rb_url LIKE '%europe/france/alsace%') then
         return -8636;
     elsif (rb_url LIKE '%europe/france/aquitaine%') then
@@ -267,6 +301,18 @@ BEGIN
         return -47806;
     elsif (rb_url LIKE '%europe/netherlands/zuid-holland%') then
         return -47772;
+    elsif (rb_url LIKE '%europe/norway/nord-norge%') then
+        return -17518360;
+    -- elsif (rb_url LIKE '%europe/norway/ostlandet%') then -- brakuje relacji w osm
+    --     return -;
+    elsif (rb_url LIKE '%europe/norway/sorlandet%') then
+        return -10155517;
+    elsif (rb_url LIKE '%europe/norway/svalbard-janmayen%') then
+        return -3245620;
+    elsif (rb_url LIKE '%europe/norway/trondelag%') then
+        return -406567;
+    elsif (rb_url LIKE '%europe/norway/vestlandet%') then
+        return -17518365;
     elsif (rb_url LIKE '%australia-oceania/australia%') then
         return -80500;
     elsif (rb_url LIKE '%australia-oceania/new-zealand%') then
