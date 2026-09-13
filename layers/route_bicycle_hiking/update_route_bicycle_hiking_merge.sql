@@ -149,10 +149,10 @@ BEGIN
         return -62341;
     elsif (rb_url LIKE '%europe/germany/saarland%') then
         return -62372;
-    elsif (rb_url LIKE '%europe/germany/sachsen%') then
-        return -62467;
     elsif (rb_url LIKE '%europe/germany/sachsen-anhalt%') then
         return -62607;
+    elsif (rb_url LIKE '%europe/germany/sachsen%') then
+        return -62467;
     elsif (rb_url LIKE '%europe/germany/schleswig-holstein%') then
         return -51529;
     elsif (rb_url LIKE '%europe/germany/thueringen%') then
