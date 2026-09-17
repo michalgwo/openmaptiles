@@ -12,7 +12,7 @@ osm_country=$2
     fi
 fi
 
-rm data/europe data/africa data/australia-oceania data/asia data/antarctica data/central-america data/north-america data/south-america asia.bbox asia.osm.pbf -rf
+rm data/europe data/africa data/australia-oceania data/asia data/antarctica data/central-america data/north-america data/south-america data/asia.bbox data/asia.osm.pbf -rf
 make clean
 make
 
