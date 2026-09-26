@@ -24,7 +24,7 @@ if [ $# -gt 2 ]; then
     fi
 fi
 
-rm data/europe data/africa data/australia-oceania data/asia data/antarctica data/central-america data/north-america data/south-america data/asia.bbox data/asia.osm.pbf -rf
+rm data/europe data/africa data/australia-oceania data/asia data/antarctica data/central-america data/north-america data/south-america data/asia.bbox data/asia.osm.pbf data/north-america.bbox data/north-america.osm.pbf data/central-america.bbox data/central-america.osm.pbf data/south-america.bbox data/south-america.osm.pbf data/africa.bbox data/africa.osm.pbf data/antarctica.bbox data/antarctica.osm.pbf data/australia-oceania.bbox data/australia-oceania.osm.pbf -rf
 make clean
 make
 
