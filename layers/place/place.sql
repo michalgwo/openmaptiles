@@ -19,23 +19,23 @@ AS
 $$
 SELECT *
 FROM (
-         SELECT
-             -- etldoc: osm_continent_point -> layer_place:z0_3
-             osm_id * 10 AS osm_id,
-             geometry,
-             name,
-             COALESCE(NULLIF(name_en, ''), name) AS name_en,
-             COALESCE(NULLIF(name_de, ''), name, name_en) AS name_de,
-             tags,
-             'continent' AS class,
-             1 AS "rank",
-             NULL::int AS capital,
-             NULL::text AS iso_a2
-         FROM osm_continent_point
-         WHERE geometry && bbox
-           AND zoom_level < 4
+        --  SELECT
+        --      -- etldoc: osm_continent_point -> layer_place:z0_3
+        --      osm_id * 10 AS osm_id,
+        --      geometry,
+        --      name,
+        --      NULL::text AS name_en,
+        --      NULL::text AS name_de,
+        --      tags,
+        --      'continent' AS class,
+        --      1 AS "rank",
+        --      NULL::int AS capital,
+        --      NULL::text AS iso_a2
+        --  FROM osm_continent_point
+        --  WHERE geometry && bbox
+        --    AND zoom_level < 4
 
-         UNION ALL
+        --  UNION ALL
 
          SELECT
              -- etldoc: osm_country_point -> layer_place:z0_3
@@ -45,8 +45,8 @@ FROM (
              osm_id * 10 AS osm_id,
              geometry,
              name,
-             COALESCE(NULLIF(name_en, ''), name) AS name_en,
-             COALESCE(NULLIF(name_de, ''), name, name_en) AS name_de,
+             NULL::text AS name_en,
+             NULL::text AS name_de,
              tags,
              'country' AS class,
              "rank",
@@ -54,6 +54,7 @@ FROM (
              iso3166_1_alpha_2 AS iso_a2
          FROM osm_country_point
          WHERE geometry && bbox
+            AND zoom_level > 1
            AND "rank" <= zoom_level + 1
            AND name <> ''
 
@@ -67,8 +68,8 @@ FROM (
              osm_id * 10 AS osm_id,
              geometry,
              name,
-             COALESCE(NULLIF(name_en, ''), name) AS name_en,
-             COALESCE(NULLIF(name_de, ''), name, name_en) AS name_de,
+             NULL::text AS name_en,
+             NULL::text AS name_de,
              tags,
              place::text AS class,
              "rank",
@@ -76,70 +77,71 @@ FROM (
              NULL::text AS iso_a2
          FROM osm_state_point
          WHERE geometry && bbox
-           AND name <> ''
+            AND zoom_level > 3
+           AND name <> '' AND rank < 3
            AND zoom_level > 1
 
-         UNION ALL
+        --  UNION ALL
 
-         SELECT
-             -- etldoc: osm_island_point    -> layer_place:z12_14
-             osm_id * 10 AS osm_id,
-             geometry,
-             name,
-             COALESCE(NULLIF(name_en, ''), name) AS name_en,
-             COALESCE(NULLIF(name_de, ''), name, name_en) AS name_de,
-             tags,
-             'island' AS class,
-             7 AS "rank",
-             NULL::int AS capital,
-             NULL::text AS iso_a2
-         FROM osm_island_point
-         WHERE zoom_level >= 12
-           AND geometry && bbox
+        --  SELECT
+        --      -- etldoc: osm_island_point    -> layer_place:z12_14
+        --      osm_id * 10 AS osm_id,
+        --      geometry,
+        --      name,
+        --     NULL::text AS name_en,
+        --      NULL::text AS name_de,
+        --     tags,
+        --      'island' AS class,
+        --      7 AS "rank",
+        --      NULL::int AS capital,
+        --      NULL::text AS iso_a2
+        --  FROM osm_island_point
+        --  WHERE zoom_level >= 12
+        --    AND geometry && bbox
 
-         UNION ALL
+        --  UNION ALL
 
-         SELECT
-             -- etldoc: osm_island_polygon  -> layer_place:z8_11
-             -- etldoc: osm_island_polygon  -> layer_place:z12_14
-             osm_id * 10 AS osm_id,
-             geometry,
-             name,
-             COALESCE(NULLIF(name_en, ''), name) AS name_en,
-             COALESCE(NULLIF(name_de, ''), name, name_en) AS name_de,
-             tags,
-             'island' AS class,
-             area_rank(area) AS "rank",
-             NULL::int AS capital,
-             NULL::text AS iso_a2
-         FROM osm_island_polygon
-         WHERE geometry && bbox
-           AND ((zoom_level = 8 AND area_rank(area) <= 3)
-             OR (zoom_level = 9 AND area_rank(area) <= 4)
-             OR (zoom_level >= 10))
+        --  SELECT
+        --      -- etldoc: osm_island_polygon  -> layer_place:z8_11
+        --      -- etldoc: osm_island_polygon  -> layer_place:z12_14
+        --      osm_id * 10 AS osm_id,
+        --      geometry,
+        --      name,
+        --      NULL::text AS name_en,
+        --      NULL::text AS name_de,
+        --      tags,
+        --      'island' AS class,
+        --      area_rank(area) AS "rank",
+        --      NULL::int AS capital,
+        --      NULL::text AS iso_a2
+        --  FROM osm_island_polygon
+        --  WHERE geometry && bbox
+        --    AND ((zoom_level = 8 AND area_rank(area) <= 3)
+        --      OR (zoom_level = 9 AND area_rank(area) <= 4)
+        --      OR (zoom_level >= 10))
 
-         UNION ALL
+        --  UNION ALL
 
-         SELECT
-             -- etldoc: osm_boundary_polygon  -> layer_place:z6_11
-             -- etldoc: osm_boundary_polygon  -> layer_place:z12_14
-             osm_id * 10 AS osm_id,
-             geometry_point,
-             name,
-             NULL::text AS name_en, -- deprecated
-             NULL::text AS name_de, -- deprecated
-             tags,
-             'aboriginal_lands' AS class,
-             area_rank(area) AS "rank",
-             NULL::int AS capital,
-             NULL::text AS iso_a2
-         FROM osm_boundary_polygon
-         WHERE geometry_point && bbox
-           AND ((zoom_level = 6 AND area_rank(area) <= 1)
-             OR (zoom_level = 7 AND area_rank(area) <= 2)
-             OR (zoom_level = 8 AND area_rank(area) <= 3)
-             OR (zoom_level = 9 AND area_rank(area) <= 4)
-             OR (zoom_level >= 10))
+        --  SELECT
+        --      -- etldoc: osm_boundary_polygon  -> layer_place:z6_11
+        --      -- etldoc: osm_boundary_polygon  -> layer_place:z12_14
+        --      osm_id * 10 AS osm_id,
+        --      geometry_point,
+        --      name,
+        --      NULL::text AS name_en, -- deprecated
+        --      NULL::text AS name_de, -- deprecated
+        --      tags,
+        --      'aboriginal_lands' AS class,
+        --      area_rank(area) AS "rank",
+        --      NULL::int AS capital,
+        --      NULL::text AS iso_a2
+        --  FROM osm_boundary_polygon
+        --  WHERE geometry_point && bbox
+        --    AND ((zoom_level = 6 AND area_rank(area) <= 1)
+        --      OR (zoom_level = 7 AND area_rank(area) <= 2)
+        --      OR (zoom_level = 8 AND area_rank(area) <= 3)
+        --      OR (zoom_level = 9 AND area_rank(area) <= 4)
+        --      OR (zoom_level >= 10))
          UNION ALL
 
          SELECT
@@ -150,8 +152,8 @@ FROM (
              osm_id * 10 AS osm_id,
              geometry,
              name,
-             name_en,
-             name_de,
+             NULL::text AS name_en,
+             NULL::text AS name_de,
              tags,
              place::text AS class,
              "rank",

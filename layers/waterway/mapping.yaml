@@ -35,14 +35,7 @@ tables:
     - name: is_intermittent
       key: intermittent
       type: bool
-    mapping:
-      waterway:
-      - stream
-      - river
-      - canal
-      - drain
-      - ditch
-
+      
   # etldoc: imposm3 -> osm_waterway_relation
   waterway_relation:
     type: relation_member
@@ -63,5 +56,3 @@ tables:
       type: string
     - name: tags
       type: hstore_tags
-    mapping:
-      waterway: [river]

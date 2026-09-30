@@ -38,7 +38,7 @@
           ]
         }
       },
-      "order": 47
+      "order": 33
     },
     {
       "id": "River",
@@ -84,7 +84,7 @@
           ]
         }
       },
-      "order": 48
+      "order": 34
     },
     {
       "id": "River intermittent",
@@ -133,7 +133,7 @@
           ]
         }
       },
-      "order": 49
+      "order": 35
     },
     {
       "id": "Other waterway",
@@ -179,7 +179,7 @@
           ]
         }
       },
-      "order": 50
+      "order": 36
     },
     {
       "id": "Other waterway intermittent",
@@ -229,7 +229,7 @@
           ]
         }
       },
-      "order": 51
+      "order": 37
     },
     {
       "id": "River bridge outline",
@@ -282,7 +282,7 @@
           ]
         }
       },
-      "order": 158
+      "order": 136
     },
     {
       "id": "River bridge",
@@ -322,7 +322,7 @@
           ]
         }
       },
-      "order": 159
+      "order": 137
     },
     {
       "id": "River labels",
@@ -377,7 +377,7 @@
         "text-halo-color": "hsla(0, 0%, 100%, 0.8)",
         "text-halo-width": 1
       },
-      "order": 204
+      "order": 182
     }
   ]
 }

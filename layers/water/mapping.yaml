@@ -92,26 +92,4 @@ tables:
     filters:
       reject:
         covered: ["yes"]
-    mapping:
-      landuse:
-      - reservoir
-      - basin
-      - salt_pond
-      leisure:
-      - swimming_pool
-      natural:
-      - water
-      - bay
-      - spring
-      waterway:
-      - dock
-      water:
-      - river
-      - stream
-      - canal
-      - ditch
-      - drain
-      - pond
-      - basin
-      - wastewater
     type: polygon

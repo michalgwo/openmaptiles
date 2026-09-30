@@ -86,9 +86,6 @@ tables:
     filters:
       require:
         name: ["__any__"]
-    mapping:
-      place:
-      - island
 
   # etldoc: imposm3 -> osm_island_point
   island_point:
@@ -174,11 +171,3 @@ tables:
     mapping:
       place:
       - city
-      - town
-      - village
-      - hamlet
-      - borough
-      - suburb
-      - quarter
-      - neighbourhood
-      - isolated_dwelling

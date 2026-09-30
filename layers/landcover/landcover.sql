@@ -233,20 +233,20 @@ SELECT
 FROM ne_10m_antarctic_ice_shelves_polys_gen_z5
     );
 
-CREATE OR REPLACE VIEW landcover_z6 AS
-(
--- etldoc: ne_10m_glaciated_areas_gen_z6 ->  landcover_z6
-SELECT
-    geometry,
-    subclass
-FROM ne_10m_glaciated_areas_gen_z6
-UNION ALL
--- etldoc: ne_10m_antarctic_ice_shelves_polys_gen_z6 ->  landcover_z6
-SELECT
-    geometry,
-    subclass
-FROM ne_10m_antarctic_ice_shelves_polys_gen_z6
-    );
+-- CREATE OR REPLACE VIEW landcover_z6 AS
+-- (
+-- -- etldoc: ne_10m_glaciated_areas_gen_z6 ->  landcover_z6
+-- SELECT
+--     geometry,
+--     subclass
+-- FROM ne_10m_glaciated_areas_gen_z6
+-- UNION ALL
+-- -- etldoc: ne_10m_antarctic_ice_shelves_polys_gen_z6 ->  landcover_z6
+-- SELECT
+--     geometry,
+--     subclass
+-- FROM ne_10m_antarctic_ice_shelves_polys_gen_z6
+--     );
 
 -- etldoc: layer_landcover[shape=record fillcolor=lightpink, style="rounded, filled", label="layer_landcover | <z0> z0 | <z1> z1 | <z2> z2 | <z3> z3 | <z4> z4 | <z5> z5 | <z6> z6 |<z7> z7 |<z8> z8 |<z9> z9 |<z10> z10 |<z11> z11 |<z12> z12|<z13> z13|<z14_> z14+" ] ;
 
@@ -259,67 +259,59 @@ CREATE OR REPLACE FUNCTION layer_landcover(bbox geometry, zoom_level int)
             )
 AS
 $$
-WITH region_check AS (
-    SELECT EXISTS (
-        SELECT 1
-        FROM osm2pgsql_properties
-        WHERE property = 'replication_base_url'
-          AND value LIKE '%north-america/us%'
-    ) AS is_us
-)
 SELECT geometry,
        landcover_class(subclass) AS class,
        subclass
 FROM (
          -- etldoc:  landcover_z0 -> layer_landcover:z0
-         SELECT geometry, 
-                subclass
-         FROM landcover_z0
-         WHERE zoom_level = 0
-           AND geometry && bbox
-         UNION ALL
-         -- etldoc:  landcover_z1 -> layer_landcover:z1
-         SELECT geometry,
-                subclass
-         FROM landcover_z1
-         WHERE zoom_level = 1
-           AND geometry && bbox
-         UNION ALL
-         -- etldoc:  landcover_z2 -> layer_landcover:z2
-         SELECT geometry, 
-                subclass
-         FROM landcover_z2
-         WHERE zoom_level = 2
-           AND geometry && bbox
-         UNION ALL
-         -- etldoc:  landcover_z3 -> layer_landcover:z3
-         SELECT geometry,
-                subclass
-         FROM landcover_z3
-         WHERE zoom_level = 3
-           AND geometry && bbox
-         UNION ALL
-         -- etldoc:  landcover_z4 -> layer_landcover:z4
-         SELECT geometry,
-                subclass
-         FROM landcover_z4
-         WHERE zoom_level = 4
-           AND geometry && bbox
-         UNION ALL
-         -- etldoc:  landcover_z5 -> layer_landcover:z5
+        --  SELECT geometry, 
+        --         subclass
+        --  FROM landcover_z0
+        --  WHERE zoom_level = 0
+        --    AND geometry && bbox
+        --  UNION ALL
+        --  -- etldoc:  landcover_z1 -> layer_landcover:z1
+        --  SELECT geometry,
+        --         subclass
+        --  FROM landcover_z1
+        --  WHERE zoom_level = 1
+        --    AND geometry && bbox
+        --  UNION ALL
+        --  -- etldoc:  landcover_z2 -> layer_landcover:z2
+        --  SELECT geometry, 
+        --         subclass
+        --  FROM landcover_z2
+        --  WHERE zoom_level = 2
+        --    AND geometry && bbox
+        --  UNION ALL
+        --  -- etldoc:  landcover_z3 -> layer_landcover:z3
+        --  SELECT geometry,
+        --         subclass
+        --  FROM landcover_z3
+        --  WHERE zoom_level = 3
+        --    AND geometry && bbox
+        --  UNION ALL
+        --  -- etldoc:  landcover_z4 -> layer_landcover:z4
+        --  SELECT geometry,
+        --         subclass
+        --  FROM landcover_z4
+        --  WHERE zoom_level = 4
+        --    AND geometry && bbox
+        --  UNION ALL
+        --  -- etldoc:  landcover_z5 -> layer_landcover:z5
          SELECT geometry, 
                 subclass
          FROM landcover_z5
-         WHERE zoom_level = 5
+         WHERE zoom_level = 5 AND (subclass = 'ice_shelf' OR subclass = 'glacier')
            AND geometry && bbox
          UNION ALL
          -- etldoc:  landcover_z6 -> layer_landcover:z6
-         SELECT geometry,
-                subclass
-         FROM landcover_z6
-         WHERE zoom_level = 6
-           AND geometry && bbox
-         UNION ALL
+        --  SELECT geometry,
+        --         subclass
+        --  FROM landcover_z6
+        --  WHERE zoom_level = 6
+        --    AND geometry && bbox
+        --  UNION ALL
          -- etldoc:  osm_landcover_gen_z7 -> layer_landcover:z7
          SELECT geometry, 
                 subclass
@@ -367,19 +359,6 @@ FROM (
                 subclass
          FROM osm_landcover_gen_z13
          WHERE zoom_level = 13
-           AND geometry && bbox
-         UNION ALL
-         -- etldoc:  osm_landcover_polygon -> layer_landcover:z14_
-         SELECT geometry, 
-                subclass
-         FROM (
-            SELECT geometry, 'wood' as subclass FROM usgs_woodland CROSS JOIN region_check WHERE region_check.is_us
-            UNION ALL
-            SELECT geometry, subclass FROM osm_landcover_polygon CROSS JOIN region_check WHERE
-                (region_check.is_us AND subclass != 'wood' AND subclass != 'forest') OR 
-                NOT region_check.is_us
-         ) AS source_data
-         WHERE zoom_level >= 14
            AND geometry && bbox
      ) AS zoom_levels;
 $$ LANGUAGE SQL STABLE

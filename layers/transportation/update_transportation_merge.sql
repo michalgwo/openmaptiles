@@ -170,10 +170,10 @@ ALTER TABLE osm_transportation_merge_linestring_gen_z11 ADD COLUMN IF NOT EXISTS
 ALTER TABLE osm_transportation_merge_linestring_gen_z11 ADD COLUMN IF NOT EXISTS new_source_ids BIGINT[];
 ALTER TABLE osm_transportation_merge_linestring_gen_z11 ADD COLUMN IF NOT EXISTS old_source_ids BIGINT[];
 
-CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z11_n_source_ids_not_null_idx 
-    ON osm_transportation_merge_linestring_gen_z11 ((new_source_ids IS NOT NULL));
-CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z11_o_source_ids_not_null_idx 
-    ON osm_transportation_merge_linestring_gen_z11 ((old_source_ids IS NOT NULL));
+-- CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z11_n_source_ids_not_null_idx 
+--     ON osm_transportation_merge_linestring_gen_z11 ((new_source_ids IS NOT NULL));
+-- CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z11_o_source_ids_not_null_idx 
+--     ON osm_transportation_merge_linestring_gen_z11 ((old_source_ids IS NOT NULL));
 
 -- Create osm_transportation_merge_linestring_gen_z10 as a copy of osm_transportation_merge_linestring_gen_z11 but
 -- drop the "source_ids" column. This can be done because z10 and z9 tables are only simplified and not merged,
@@ -287,8 +287,8 @@ GROUP BY cluster_group, cluster, highway, network, construction, is_bridge, is_t
          bicycle, foot, horse, mtb_scale, sac_scale, operator, informal, access, toll, layer;
 
 -- Geometry Index
-CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z11_geometry_idx
-    ON osm_transportation_merge_linestring_gen_z11 USING gist (geometry);
+-- CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z11_geometry_idx
+--     ON osm_transportation_merge_linestring_gen_z11 USING gist (geometry);
 
 -- Create Primary-Keys for osm_transportation_merge_linestring_gen_z11/z10/z9 tables
 DO $$
@@ -481,10 +481,13 @@ TRUNCATE osm_transportation_merge_linestring_gen_z9;
 SELECT insert_transportation_merge_linestring_gen_z10(TRUE);
 
 -- Geometry Indexes
-CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z10_geometry_idx
-    ON osm_transportation_merge_linestring_gen_z10 USING gist (geometry);
-CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z9_geometry_idx
-    ON osm_transportation_merge_linestring_gen_z9 USING gist (geometry);
+-- CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z10_geometry_idx
+--     ON osm_transportation_merge_linestring_gen_z10 USING gist (geometry);
+-- CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z9_geometry_idx
+--     ON osm_transportation_merge_linestring_gen_z9 USING gist (geometry);
+
+
+-- DROP TABLE IF EXISTS osm_transportation_merge_linestring_gen_z10 CASCADE;
 
 -- etldoc: osm_transportation_merge_linestring_gen_z9 -> osm_transportation_merge_linestring_gen_z8
 CREATE TABLE IF NOT EXISTS osm_transportation_merge_linestring_gen_z8(
@@ -508,10 +511,10 @@ ALTER TABLE osm_transportation_merge_linestring_gen_z8 ADD COLUMN IF NOT EXISTS 
 ALTER TABLE osm_transportation_merge_linestring_gen_z8 ADD COLUMN IF NOT EXISTS new_source_ids bigint[];
 ALTER TABLE osm_transportation_merge_linestring_gen_z8 ADD COLUMN IF NOT EXISTS old_source_ids bigint[];
 
-CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z8_n_source_ids_not_null_idx 
-    ON osm_transportation_merge_linestring_gen_z8 ((new_source_ids IS NOT NULL));
-CREATE INDEX IF NOT EXISTS  osm_transportation_merge_linestring_gen_z8_o_source_ids_not_null_idx 
-    ON osm_transportation_merge_linestring_gen_z8 ((old_source_ids IS NOT NULL));
+-- CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z8_n_source_ids_not_null_idx 
+--     ON osm_transportation_merge_linestring_gen_z8 ((new_source_ids IS NOT NULL));
+-- CREATE INDEX IF NOT EXISTS  osm_transportation_merge_linestring_gen_z8_o_source_ids_not_null_idx 
+--     ON osm_transportation_merge_linestring_gen_z8 ((old_source_ids IS NOT NULL));
 
 -- Create osm_transportation_merge_linestring_gen_z7 as a copy of osm_transportation_merge_linestring_gen_z8 but
 -- drop the "source_ids" column. This can be done because z7 to z5 tables are only simplified and not merged,
@@ -616,8 +619,8 @@ FROM (
 GROUP BY cluster_group, cluster, highway, network, construction, is_bridge, is_tunnel, is_ford, expressway;
 
 -- Geometry Index
-CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z8_geometry_idx
-    ON osm_transportation_merge_linestring_gen_z8 USING gist (geometry);
+-- CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z8_geometry_idx
+--     ON osm_transportation_merge_linestring_gen_z8 USING gist (geometry);
 
 -- Create Primary-Keys for osm_transportation_merge_linestring_gen_z8/z7/z6/z5/z4 tables
 DO $$
@@ -1016,15 +1019,17 @@ CREATE UNIQUE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z5_upd
     WHERE osm_national_network(network) AND ST_Length(geometry) > 1000;
 
 -- Geometry Indexes
-CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z7_geometry_idx
-    ON osm_transportation_merge_linestring_gen_z7 USING gist (geometry);
-CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z6_geometry_idx
-    ON osm_transportation_merge_linestring_gen_z6 USING gist (geometry);
+-- CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z7_geometry_idx
+--     ON osm_transportation_merge_linestring_gen_z7 USING gist (geometry);
+-- CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z6_geometry_idx
+--     ON osm_transportation_merge_linestring_gen_z6 USING gist (geometry);
 CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z5_geometry_idx
     ON osm_transportation_merge_linestring_gen_z5 USING gist (geometry);
 CREATE INDEX IF NOT EXISTS osm_transportation_merge_linestring_gen_z4_geometry_idx
     ON osm_transportation_merge_linestring_gen_z4 USING gist (geometry);
 
+-- DROP TABLE IF EXISTS osm_transportation_merge_linestring_gen_z7 CASCADE;
+-- DROP TABLE IF EXISTS osm_transportation_merge_linestring_gen_z6 CASCADE;
 
 -- Handle updates on
 -- osm_highway_linestring_gen_z11 -> osm_transportation_merge_linestring_gen_z11
@@ -1159,7 +1164,7 @@ BEGIN
     );
 
     -- Drop temporary tables early to save resources
-    DROP TABLE affected_merged_linestrings;
+    -- DROP TABLE IF EXISTS affected_merged_linestrings;
 
     -- Analyze the created table to speed up subsequent queries
     ANALYZE linestrings_to_merge;
@@ -1214,7 +1219,7 @@ BEGIN
     FROM linestrings_to_merge;
 
     -- Drop temporary tables early to save resources
-    DROP TABLE linestrings_to_merge;
+    -- DROP TABLE IF EXISTS linestrings_to_merge;
 
     -- Create index on cluster columns and analyze the created table to speed up subsequent queries
     CREATE INDEX ON clustered_linestrings_to_merge (cluster_group, cluster);
@@ -1279,7 +1284,7 @@ BEGIN
     ON CONFLICT (id, source_id) DO NOTHING;
 
     -- Cleanup remaining table
-    DROP TABLE clustered_linestrings_to_merge;
+    -- DROP TABLE IF EXISTS clustered_linestrings_to_merge;
 
     -- Restore temporary Merged-LineString to Source-LineStrings-ID columns
     UPDATE osm_transportation_merge_linestring_gen_z11 SET new_source_ids = NULL WHERE new_source_ids IS NOT NULL;
@@ -1323,6 +1328,9 @@ CREATE CONSTRAINT TRIGGER trigger_refresh_z11
     INITIALLY DEFERRED
     FOR EACH ROW
 EXECUTE PROCEDURE transportation.refresh_z11();
+
+-- DROP TABLE IF EXISTS osm_transportation_merge_linestring_gen_z11 CASCADE;
+
 
 
 -- Handle updates on
@@ -1457,7 +1465,7 @@ BEGIN
     access IS NULL;
 
     -- Drop temporary tables early to save resources
-    DROP TABLE affected_merged_linestrings;
+    -- DROP TABLE IF EXISTS affected_merged_linestrings;
 
     -- Analyze the created table to speed up subsequent queries
     ANALYZE linestrings_to_merge;
@@ -1507,7 +1515,7 @@ BEGIN
     FROM linestrings_to_merge;
 
     -- Drop temporary tables early to save resources
-    DROP TABLE linestrings_to_merge;
+    -- DROP TABLE IF EXISTS linestrings_to_merge;
 
     -- Create index on cluster columns and analyze the created table to speed up subsequent queries
     CREATE INDEX ON clustered_linestrings_to_merge (cluster_group, cluster);
@@ -1562,7 +1570,7 @@ BEGIN
     ON CONFLICT (id, source_id) DO NOTHING;
 
     -- Cleanup
-    DROP TABLE clustered_linestrings_to_merge;
+    -- DROP TABLE IF EXISTS clustered_linestrings_to_merge;
 
     -- Restore temporary Merged-LineString to Source-LineStrings-ID columns
 
@@ -1594,11 +1602,15 @@ CREATE TRIGGER trigger_store_osm_transportation_merge_linestring_gen_z8
     FOR EACH ROW
 EXECUTE PROCEDURE transportation.store_z8();
 
+-- DROP TABLE IF EXISTS osm_transportation_merge_linestring_gen_z8 CASCADE;
+
 CREATE TRIGGER trigger_flag_transportation_z9
     AFTER INSERT OR UPDATE OR DELETE
     ON osm_transportation_merge_linestring_gen_z9
     FOR EACH STATEMENT
 EXECUTE PROCEDURE transportation.flag_z9();
+
+-- DROP TABLE IF EXISTS osm_transportation_merge_linestring_gen_z9 CASCADE;
 
 CREATE CONSTRAINT TRIGGER trigger_refresh_z8
     AFTER INSERT

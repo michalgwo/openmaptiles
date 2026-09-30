@@ -15,14 +15,6 @@ DROP TABLE IF EXISTS simplify_vw_z13 CASCADE;
 
 DROP TABLE IF EXISTS region_check;
 
-CREATE TEMP TABLE region_check AS
-SELECT EXISTS (
-    SELECT 1 
-    FROM osm2pgsql_properties 
-    WHERE property = 'replication_base_url' 
-    AND value LIKE '%north-america/us%'
-) AS is_us;
-
 DO $$ 
 BEGIN
     IF NOT EXISTS (
@@ -58,11 +50,7 @@ CREATE TABLE simplify_vw_z13 AS
              ST_SimplifyVW(geometry, power(zres(13),2)),
              0.001)) AS geometry
     FROM (
-        SELECT 'wood' as subclass, geometry FROM usgs_woodland CROSS JOIN region_check WHERE region_check.is_us
-        UNION ALL
-        SELECT subclass, geometry  FROM osm_landcover_polygon CROSS JOIN region_check WHERE
-                (region_check.is_us AND subclass != 'wood' AND subclass != 'forest') OR 
-                NOT region_check.is_us
+        SELECT subclass, geometry FROM osm_landcover_polygon
     ) AS source_data
     WHERE ST_Area(geometry) > power(zres(12),2)
 );

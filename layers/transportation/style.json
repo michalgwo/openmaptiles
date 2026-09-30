@@ -76,7 +76,7 @@
           ]
         }
       },
-      "order": 63
+      "order": 41
     },
     {
       "id": "Service tunnel outline",
@@ -125,7 +125,7 @@
           ]
         }
       },
-      "order": 64
+      "order": 42
     },
     {
       "id": "Link tunnel outline",
@@ -180,7 +180,7 @@
           ]
         }
       },
-      "order": 65
+      "order": 43
     },
     {
       "id": "Street tunnel outline",
@@ -242,7 +242,7 @@
           ]
         }
       },
-      "order": 66
+      "order": 44
     },
     {
       "id": "Tertiary tunnel outline",
@@ -313,7 +313,7 @@
           ]
         }
       },
-      "order": 67
+      "order": 45
     },
     {
       "id": "Secondary tunnel outline",
@@ -384,7 +384,7 @@
           ]
         }
       },
-      "order": 68
+      "order": 46
     },
     {
       "id": "Trunk tunnel outline",
@@ -457,7 +457,7 @@
           ]
         }
       },
-      "order": 69
+      "order": 47
     },
     {
       "id": "Trunk tunnel under construction outline",
@@ -519,7 +519,7 @@
           ]
         }
       },
-      "order": 70
+      "order": 48
     },
     {
       "id": "Primary tunnel outline",
@@ -592,7 +592,7 @@
           ]
         }
       },
-      "order": 71
+      "order": 49
     },
     {
       "id": "Highway tunnel under construction outline",
@@ -652,7 +652,7 @@
           ]
         }
       },
-      "order": 72
+      "order": 50
     },
     {
       "id": "Highway tunnel outline",
@@ -712,7 +712,7 @@
           ]
         }
       },
-      "order": 73
+      "order": 51
     },
     {
       "id": "Path tunnel second outline",
@@ -773,7 +773,7 @@
           ]
         }
       },
-      "order": 74
+      "order": 52
     },
     {
       "id": "Path tunnel outline",
@@ -834,7 +834,7 @@
           ]
         }
       },
-      "order": 75
+      "order": 53
     },
     {
       "id": "Cycleway path tunnel",
@@ -906,7 +906,7 @@
           ]
         }
       },
-      "order": 76
+      "order": 54
     },
     {
       "id": "Bridleway path tunnel",
@@ -983,7 +983,7 @@
           ]
         }
       },
-      "order": 77
+      "order": 55
     },
     {
       "id": "Footway path tunnel",
@@ -1058,7 +1058,7 @@
           ]
         }
       },
-      "order": 78
+      "order": 56
     },
     {
       "id": "Highway link tunnel",
@@ -1134,7 +1134,7 @@
           ]
         }
       },
-      "order": 79
+      "order": 57
     },
     {
       "id": "Service tunnel",
@@ -1188,7 +1188,7 @@
           ]
         }
       },
-      "order": 80
+      "order": 58
     },
     {
       "id": "Service tunnel under construction",
@@ -1246,7 +1246,7 @@
           ]
         }
       },
-      "order": 81
+      "order": 59
     },
     {
       "id": "Link tunnel",
@@ -1300,7 +1300,7 @@
           ]
         }
       },
-      "order": 82
+      "order": 60
     },
     {
       "id": "Minor tunnel",
@@ -1346,7 +1346,7 @@
           ]
         }
       },
-      "order": 83
+      "order": 61
     },
     {
       "id": "Minor tunnel under construction",
@@ -1396,7 +1396,7 @@
           ]
         }
       },
-      "order": 84
+      "order": 62
     },
     {
       "id": "Tertiary tunnel",
@@ -1461,7 +1461,7 @@
           ]
         }
       },
-      "order": 85
+      "order": 63
     },
     {
       "id": "Tertiary tunnel under construction",
@@ -1530,7 +1530,7 @@
           ]
         }
       },
-      "order": 86
+      "order": 64
     },
     {
       "id": "Secondary tunnel",
@@ -1608,7 +1608,7 @@
           ]
         }
       },
-      "order": 87
+      "order": 65
     },
     {
       "id": "Secondary tunnel under construction",
@@ -1690,7 +1690,7 @@
           ]
         }
       },
-      "order": 88
+      "order": 66
     },
     {
       "id": "Primary tunnel",
@@ -1773,7 +1773,7 @@
           ]
         }
       },
-      "order": 89
+      "order": 67
     },
     {
       "id": "Primary tunnel under construction",
@@ -1860,7 +1860,7 @@
           ]
         }
       },
-      "order": 90
+      "order": 68
     },
     {
       "id": "Trunk tunnel",
@@ -1953,7 +1953,7 @@
           ]
         }
       },
-      "order": 91
+      "order": 69
     },
     {
       "id": "Trunk tunnel under construction",
@@ -2039,7 +2039,7 @@
           ]
         }
       },
-      "order": 92
+      "order": 70
     },
     {
       "id": "Highway tunnel",
@@ -2095,7 +2095,7 @@
           ]
         }
       },
-      "order": 93
+      "order": 71
     },
     {
       "id": "Highway tunnel under construction",
@@ -2155,7 +2155,7 @@
           ]
         }
       },
-      "order": 94
+      "order": 72
     },
     {
       "id": "Major rail tunnel",
@@ -2199,7 +2199,7 @@
           ]
         }
       },
-      "order": 95
+      "order": 73
     },
     {
       "id": "Major rail tunnel hatching",
@@ -2260,7 +2260,7 @@
           ]
         }
       },
-      "order": 96
+      "order": 74
     },
     {
       "id": "Pier",
@@ -2288,7 +2288,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(42, 49%, 93%)"
       },
-      "order": 97
+      "order": 75
     },
     {
       "id": "Pier road",
@@ -2329,7 +2329,7 @@
           ]
         }
       },
-      "order": 98
+      "order": 76
     },
     {
       "id": "Bridge area",
@@ -2358,7 +2358,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(0, 0%, 72%)"
       },
-      "order": 99
+      "order": 77
     },
     {
       "id": "Platform area",
@@ -2395,7 +2395,7 @@
         "fill-color": "hsl(0, 0%, 73%)",
         "fill-outline-color": "hsl(0, 0%, 50%)"
       },
-      "order": 100
+      "order": 78
     },
     {
       "id": "Pedestrian area",
@@ -2432,7 +2432,7 @@
       "paint": {
         "fill-color": "hsl(240, 19%, 89%)"
       },
-      "order": 101
+      "order": 79
     },
     {
       "id": "Service road outline",
@@ -2491,7 +2491,7 @@
           ]
         }
       },
-      "order": 102
+      "order": 80
     },
     {
       "id": "Track road outline",
@@ -2549,7 +2549,7 @@
           ]
         }
       },
-      "order": 103
+      "order": 81
     },
     {
       "id": "Tertiary road link outline",
@@ -2622,7 +2622,7 @@
           ]
         }
       },
-      "order": 104
+      "order": 82
     },
     {
       "id": "Secondary road link outline",
@@ -2706,7 +2706,7 @@
           ]
         }
       },
-      "order": 105
+      "order": 83
     },
     {
       "id": "Primary road link outline",
@@ -2786,7 +2786,7 @@
           ]
         }
       },
-      "order": 106
+      "order": 84
     },
     {
       "id": "Trunk road link outline",
@@ -2862,7 +2862,7 @@
           ]
         }
       },
-      "order": 107
+      "order": 85
     },
     {
       "id": "Highway link outline",
@@ -2943,7 +2943,7 @@
           ]
         }
       },
-      "order": 108
+      "order": 86
     },
     {
       "id": "Minor road outline",
@@ -3025,7 +3025,7 @@
           ]
         }
       },
-      "order": 109
+      "order": 87
     },
     {
       "id": "Tertiary road outline",
@@ -3099,7 +3099,7 @@
           ]
         }
       },
-      "order": 110
+      "order": 88
     },
     {
       "id": "Secondary road outline",
@@ -3184,7 +3184,7 @@
           ]
         }
       },
-      "order": 111
+      "order": 89
     },
     {
       "id": "Trunk road outline",
@@ -3274,7 +3274,7 @@
           ]
         }
       },
-      "order": 112
+      "order": 90
     },
     {
       "id": "Primary road outline",
@@ -3364,7 +3364,7 @@
           ]
         }
       },
-      "order": 113
+      "order": 91
     },
     {
       "id": "Highway road outline",
@@ -3428,7 +3428,7 @@
           ]
         }
       },
-      "order": 114
+      "order": 92
     },
     {
       "id": "Pedestrian road outline",
@@ -3492,7 +3492,7 @@
           ]
         }
       },
-      "order": 115
+      "order": 93
     },
     {
       "id": "Pedestrian road",
@@ -3556,7 +3556,7 @@
           ]
         }
       },
-      "order": 116
+      "order": 94
     },
     {
       "id": "Steps path outline",
@@ -3618,7 +3618,7 @@
           ]
         }
       },
-      "order": 117
+      "order": 95
     },
     {
       "id": "Bridleway path outline",
@@ -3693,7 +3693,7 @@
           ]
         }
       },
-      "order": 118
+      "order": 96
     },
     {
       "id": "Cycleway path outline",
@@ -3763,7 +3763,7 @@
           ]
         }
       },
-      "order": 119
+      "order": 97
     },
     {
       "id": "Footway path outline",
@@ -3836,7 +3836,7 @@
           ]
         }
       },
-      "order": 120
+      "order": 98
     },
     {
       "id": "Cycleway path",
@@ -3909,7 +3909,7 @@
           ]
         }
       },
-      "order": 121
+      "order": 99
     },
     {
       "id": "Steps path",
@@ -3974,7 +3974,7 @@
           ]
         }
       },
-      "order": 122
+      "order": 100
     },
     {
       "id": "Bridleway path",
@@ -4052,7 +4052,7 @@
           ]
         }
       },
-      "order": 123
+      "order": 101
     },
     {
       "id": "Footway path",
@@ -4132,7 +4132,7 @@
           ]
         }
       },
-      "order": 124
+      "order": 102
     },
     {
       "id": "Tertiary road link",
@@ -4215,7 +4215,7 @@
           ]
         }
       },
-      "order": 125
+      "order": 103
     },
     {
       "id": "Secondary road link",
@@ -4298,7 +4298,7 @@
           ]
         }
       },
-      "order": 126
+      "order": 104
     },
     {
       "id": "Primary road link",
@@ -4367,7 +4367,7 @@
           ]
         }
       },
-      "order": 127
+      "order": 105
     },
     {
       "id": "Trunk road link",
@@ -4443,7 +4443,7 @@
           ]
         }
       },
-      "order": 128
+      "order": 106
     },
     {
       "id": "Highway road link",
@@ -4527,7 +4527,7 @@
           ]
         }
       },
-      "order": 129
+      "order": 107
     },
     {
       "id": "Service road",
@@ -4587,7 +4587,7 @@
           ]
         }
       },
-      "order": 130
+      "order": 108
     },
     {
       "id": "Track road",
@@ -4649,7 +4649,7 @@
           ]
         }
       },
-      "order": 131
+      "order": 109
     },
     {
       "id": "Service road under construction",
@@ -4711,7 +4711,7 @@
           ]
         }
       },
-      "order": 132
+      "order": 110
     },
     {
       "id": "Raceway road",
@@ -4773,7 +4773,7 @@
           ]
         }
       },
-      "order": 133
+      "order": 111
     },
     {
       "id": "Minor road under construction",
@@ -4828,7 +4828,7 @@
           7
         ]
       },
-      "order": 134
+      "order": 112
     },
     {
       "id": "Minor road under construction dash",
@@ -4896,7 +4896,7 @@
           7
         ]
       },
-      "order": 135
+      "order": 113
     },
     {
       "id": "Minor road",
@@ -4977,7 +4977,7 @@
           ]
         }
       },
-      "order": 136
+      "order": 114
     },
     {
       "id": "Tertiary road under construction",
@@ -5024,7 +5024,7 @@
           7
         ]
       },
-      "order": 137
+      "order": 115
     },
     {
       "id": "Tertiary road under construction dash",
@@ -5086,7 +5086,7 @@
           7
         ]
       },
-      "order": 138
+      "order": 116
     },
     {
       "id": "Tertiary road",
@@ -5178,7 +5178,7 @@
           ]
         }
       },
-      "order": 139
+      "order": 117
     },
     {
       "id": "Secondary road under construction",
@@ -5240,7 +5240,7 @@
           7
         ]
       },
-      "order": 140
+      "order": 118
     },
     {
       "id": "Secondary road under construction dash",
@@ -5291,7 +5291,7 @@
           7
         ]
       },
-      "order": 141
+      "order": 119
     },
     {
       "id": "Secondary road",
@@ -5387,7 +5387,7 @@
           ]
         }
       },
-      "order": 142
+      "order": 120
     },
     {
       "id": "Primary road under construction",
@@ -5452,7 +5452,7 @@
           7
         ]
       },
-      "order": 143
+      "order": 121
     },
     {
       "id": "Primary road under construction dash",
@@ -5508,7 +5508,7 @@
           7
         ]
       },
-      "order": 144
+      "order": 122
     },
     {
       "id": "Primary road",
@@ -5604,7 +5604,7 @@
           ]
         }
       },
-      "order": 145
+      "order": 123
     },
     {
       "id": "Trunk road under construction",
@@ -5669,7 +5669,7 @@
           7
         ]
       },
-      "order": 146
+      "order": 124
     },
     {
       "id": "Trunk road under construction dash",
@@ -5725,7 +5725,7 @@
           7
         ]
       },
-      "order": 147
+      "order": 125
     },
     {
       "id": "Trunk road",
@@ -5829,7 +5829,7 @@
           ]
         }
       },
-      "order": 148
+      "order": 126
     },
     {
       "id": "Highway road under construction",
@@ -5897,7 +5897,7 @@
           7
         ]
       },
-      "order": 149
+      "order": 127
     },
     {
       "id": "Highway road under construction dash",
@@ -5955,7 +5955,7 @@
           7
         ]
       },
-      "order": 150
+      "order": 128
     },
     {
       "id": "Highway road",
@@ -6019,7 +6019,7 @@
           ]
         }
       },
-      "order": 151
+      "order": 129
     },
     {
       "id": "Subway line",
@@ -6063,7 +6063,7 @@
           ]
         }
       },
-      "order": 152
+      "order": 130
     },
     {
       "id": "Major rail service",
@@ -6131,7 +6131,7 @@
           ]
         }
       },
-      "order": 153
+      "order": 131
     },
     {
       "id": "Major rail",
@@ -6198,7 +6198,7 @@
           ]
         }
       },
-      "order": 154
+      "order": 132
     },
     {
       "id": "Minor rail",
@@ -6244,7 +6244,7 @@
           ]
         }
       },
-      "order": 155
+      "order": 133
     },
     {
       "id": "Major rail hatching",
@@ -6294,7 +6294,7 @@
           ]
         }
       },
-      "order": 156
+      "order": 134
     },
     {
       "id": "Minor rail hatching",
@@ -6344,7 +6344,7 @@
           ]
         }
       },
-      "order": 157
+      "order": 135
     },
     {
       "id": "Highway link bridge outline",
@@ -6410,7 +6410,7 @@
           ]
         }
       },
-      "order": 160
+      "order": 138
     },
     {
       "id": "Service bridge outline",
@@ -6454,7 +6454,7 @@
           ]
         }
       },
-      "order": 161
+      "order": 139
     },
     {
       "id": "Link bridge outline",
@@ -6503,7 +6503,7 @@
           ]
         }
       },
-      "order": 162
+      "order": 140
     },
     {
       "id": "Street bridge outline",
@@ -6565,7 +6565,7 @@
           ]
         }
       },
-      "order": 163
+      "order": 141
     },
     {
       "id": "Path bridge second outline",
@@ -6628,7 +6628,7 @@
           ]
         }
       },
-      "order": 164
+      "order": 142
     },
     {
       "id": "Path bridge outline",
@@ -6691,7 +6691,7 @@
           ]
         }
       },
-      "order": 165
+      "order": 143
     },
     {
       "id": "Secondary bridge outline",
@@ -6754,7 +6754,7 @@
           ]
         }
       },
-      "order": 166
+      "order": 144
     },
     {
       "id": "Tertiary bridge outline",
@@ -6796,7 +6796,7 @@
           ]
         }
       },
-      "order": 167
+      "order": 145
     },
     {
       "id": "Trunk bridge outline",
@@ -6864,7 +6864,7 @@
           ]
         }
       },
-      "order": 168
+      "order": 146
     },
     {
       "id": "Primary bridge outline",
@@ -6921,7 +6921,7 @@
           ]
         }
       },
-      "order": 169
+      "order": 147
     },
     {
       "id": "Highway bridge outline",
@@ -6971,7 +6971,7 @@
           ]
         }
       },
-      "order": 170
+      "order": 148
     },
     {
       "id": "Cycleway bridge",
@@ -7043,7 +7043,7 @@
           ]
         }
       },
-      "order": 171
+      "order": 149
     },
     {
       "id": "Bridleway bridge",
@@ -7120,7 +7120,7 @@
           ]
         }
       },
-      "order": 172
+      "order": 150
     },
     {
       "id": "Footway bridge",
@@ -7195,7 +7195,7 @@
           ]
         }
       },
-      "order": 173
+      "order": 151
     },
     {
       "id": "Highway link bridge",
@@ -7260,7 +7260,7 @@
           ]
         }
       },
-      "order": 174
+      "order": 152
     },
     {
       "id": "Service bridge under construction",
@@ -7309,7 +7309,7 @@
           ]
         }
       },
-      "order": 175
+      "order": 153
     },
     {
       "id": "Service bridge",
@@ -7354,7 +7354,7 @@
           ]
         }
       },
-      "order": 176
+      "order": 154
     },
     {
       "id": "Link bridge",
@@ -7403,7 +7403,7 @@
           ]
         }
       },
-      "order": 177
+      "order": 155
     },
     {
       "id": "Minor bridge under construction",
@@ -7450,7 +7450,7 @@
           7
         ]
       },
-      "order": 178
+      "order": 156
     },
     {
       "id": "Minor bridge under construction dash",
@@ -7500,7 +7500,7 @@
           7
         ]
       },
-      "order": 179
+      "order": 157
     },
     {
       "id": "Minor bridge",
@@ -7545,7 +7545,7 @@
           ]
         }
       },
-      "order": 180
+      "order": 158
     },
     {
       "id": "Tertiary bridge under construction",
@@ -7590,7 +7590,7 @@
           7
         ]
       },
-      "order": 181
+      "order": 159
     },
     {
       "id": "Tertiary bridge under construction dash",
@@ -7636,7 +7636,7 @@
           7
         ]
       },
-      "order": 182
+      "order": 160
     },
     {
       "id": "Tertiary bridge",
@@ -7702,7 +7702,7 @@
           ]
         }
       },
-      "order": 183
+      "order": 161
     },
     {
       "id": "Secondary bridge under construction",
@@ -7747,7 +7747,7 @@
           7
         ]
       },
-      "order": 184
+      "order": 162
     },
     {
       "id": "Secondary bridge under construction dash",
@@ -7793,7 +7793,7 @@
           7
         ]
       },
-      "order": 185
+      "order": 163
     },
     {
       "id": "Secondary bridge",
@@ -7863,7 +7863,7 @@
           ]
         }
       },
-      "order": 186
+      "order": 164
     },
     {
       "id": "Primary bridge under construction",
@@ -7909,7 +7909,7 @@
           7
         ]
       },
-      "order": 187
+      "order": 165
     },
     {
       "id": "Primary bridge under construction dash",
@@ -7958,7 +7958,7 @@
           7
         ]
       },
-      "order": 188
+      "order": 166
     },
     {
       "id": "Primary bridge",
@@ -8023,7 +8023,7 @@
           ]
         }
       },
-      "order": 189
+      "order": 167
     },
     {
       "id": "Trunk bridge under construction",
@@ -8069,7 +8069,7 @@
           7
         ]
       },
-      "order": 190
+      "order": 168
     },
     {
       "id": "Trunk bridge under construction dash",
@@ -8120,7 +8120,7 @@
           7
         ]
       },
-      "order": 191
+      "order": 169
     },
     {
       "id": "Trunk bridge",
@@ -8181,7 +8181,7 @@
           ]
         }
       },
-      "order": 192
+      "order": 170
     },
     {
       "id": "Highway bridge under construction",
@@ -8244,7 +8244,7 @@
           7
         ]
       },
-      "order": 193
+      "order": 171
     },
     {
       "id": "Highway bridge under construction dash",
@@ -8297,7 +8297,7 @@
           7
         ]
       },
-      "order": 194
+      "order": 172
     },
     {
       "id": "Highway bridge",
@@ -8357,7 +8357,7 @@
           ]
         }
       },
-      "order": 195
+      "order": 173
     },
     {
       "id": "Major rail bridge service",
@@ -8424,7 +8424,7 @@
           ]
         }
       },
-      "order": 196
+      "order": 174
     },
     {
       "id": "Major rail bridge",
@@ -8490,7 +8490,7 @@
           ]
         }
       },
-      "order": 197
+      "order": 175
     },
     {
       "id": "Major rail bridge hatching",
@@ -8539,7 +8539,7 @@
           ]
         }
       },
-      "order": 198
+      "order": 176
     },
     {
       "id": "Cablecar",
@@ -8572,7 +8572,7 @@
           ]
         }
       },
-      "order": 199
+      "order": 177
     },
     {
       "id": "Cablecar dash",
@@ -8609,7 +8609,7 @@
           ]
         }
       },
-      "order": 200
+      "order": 178
     },
     {
       "id": "Oneway path",
@@ -8653,7 +8653,7 @@
       "paint": {
         "icon-opacity": 1
       },
-      "order": 229
+      "order": 185
     },
     {
       "id": "Oneway",
@@ -8703,7 +8703,7 @@
       "paint": {
         "icon-opacity": 1
       },
-      "order": 230
+      "order": 186
     },
     {
       "id": "Oneway opposite",
@@ -8754,7 +8754,7 @@
       "paint": {
         "icon-opacity": 0.5
       },
-      "order": 231
+      "order": 187
     },
     {
       "id": "Ferry line",
@@ -8806,7 +8806,7 @@
           ]
         }
       },
-      "order": 232
+      "order": 188
     }
   ]
 }

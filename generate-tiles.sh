@@ -2,7 +2,7 @@
 set -euo pipefail
 
 osm_continent=$1
-osm_country=$2
+osm_country=""
 osm_region=""
 import_data=""
 slim=""
@@ -28,19 +28,19 @@ rm data/europe data/africa data/australia-oceania data/asia data/antarctica data
 make clean
 make
 
-if [ -n "$osm_region" ]; then
-    make download area=${osm_continent}/${osm_country}/${osm_region}
-    if [ "$osm_country" = "us" ]; then
-        ./import-us-woodlands.sh $osm_region
-    fi
-else
-    make download area=${osm_continent}/${osm_country}
-fi
+# if [ -n "$osm_region" ]; then
+#     make download area=${osm_continent}/${osm_country}/${osm_region}
+#     if [ "$osm_country" = "us" ]; then
+#         ./import-us-woodlands.sh $osm_region
+#     fi
+# else
+#     make download area=${osm_continent}
+# fi
 
-if [ -n "$import_data" ]; then
+#if [ -n "$import_data" ]; then
     echo "importing data"
     make import-data
-fi
+#fi
 
 
 if [ -n "$slim" ]; then
@@ -54,13 +54,23 @@ make import-sql
 make generate-tiles-pg
 
 if [ "$osm_region" == "georgia" ] && [ "$osm_country" == "us" ]; then
-    tile-join -pk -o /mnt/d/nailthetrail/mbtiles/${osm_continent}/${osm_country}/${osm_region}.mbtiles data/tiles.mbtiles ../opencontourmaptiles/data/${osm_region}-us.mbtiles
+    cp data/tiles.mbtiles /mnt/d/nailthetrail/mbtiles-global/${osm_continent}/${osm_country}/${osm_region}.mbtiles
 elif [ -n "$osm_region" ]; then
-    if [ "$osm_region" == "flevoland" ]; then
-        cp data/tiles.mbtiles /mnt/d/nailthetrail/mbtiles/${osm_continent}/${osm_country}/${osm_region}.mbtiles
-    else
-        tile-join -pk -o /mnt/d/nailthetrail/mbtiles/${osm_continent}/${osm_country}/${osm_region}.mbtiles data/tiles.mbtiles ../opencontourmaptiles/data/${osm_region}.mbtiles
-    fi
+    cp data/tiles.mbtiles /mnt/d/nailthetrail/mbtiles-global/${osm_continent}/${osm_country}/${osm_region}.mbtiles
+elif [ -n "$osm_country" ]; then
+    cp data/tiles.mbtiles /mnt/d/nailthetrail/mbtiles-global/${osm_continent}/${osm_country}.mbtiles
 else
-    tile-join -pk -o /mnt/d/nailthetrail/mbtiles/${osm_continent}/${osm_country}.mbtiles data/tiles.mbtiles ../opencontourmaptiles/data/${osm_country}.mbtiles
+    cp data/tiles.mbtiles /mnt/d/nailthetrail/mbtiles-global/${osm_continent}.mbtiles
 fi
+
+# if [ "$osm_region" == "georgia" ] && [ "$osm_country" == "us" ]; then
+#     tile-join -pk -o /mnt/d/nailthetrail/mbtiles/${osm_continent}/${osm_country}/${osm_region}.mbtiles data/tiles.mbtiles ../opencontourmaptiles/data/${osm_region}-us.mbtiles
+# elif [ -n "$osm_region" ]; then
+#     if [ "$osm_region" == "flevoland" ]; then
+#         cp data/tiles.mbtiles /mnt/d/nailthetrail/mbtiles/${osm_continent}/${osm_country}/${osm_region}.mbtiles
+#     else
+#         tile-join -pk -o /mnt/d/nailthetrail/mbtiles/${osm_continent}/${osm_country}/${osm_region}.mbtiles data/tiles.mbtiles ../opencontourmaptiles/data/${osm_region}.mbtiles
+#     fi
+# else
+#     tile-join -pk -o /mnt/d/nailthetrail/mbtiles/${osm_continent}/${osm_country}.mbtiles data/tiles.mbtiles ../opencontourmaptiles/data/${osm_country}.mbtiles
+# fi

@@ -34,7 +34,7 @@
           ]
         }
       },
-      "order": 13
+      "order": 1
     },
     {
       "id": "Sand (medium scale)",
@@ -70,7 +70,7 @@
           ]
         }
       },
-      "order": 14
+      "order": 2
     },
     {
       "id": "Grass (medium scale)",
@@ -106,7 +106,7 @@
           ]
         }
       },
-      "order": 15
+      "order": 3
     },
     {
       "id": "Rock (medium scale)",
@@ -142,7 +142,7 @@
           ]
         }
       },
-      "order": 16
+      "order": 4
     },
     {
       "id": "Wood (medium scale)",
@@ -178,7 +178,7 @@
           ]
         }
       },
-      "order": 17
+      "order": 5
     },
     {
       "id": "Farmland (medium scale)",
@@ -214,7 +214,7 @@
           ]
         }
       },
-      "order": 18
+      "order": 6
     },
     {
       "id": "Marsh",
@@ -237,7 +237,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(60, 100%, 50%)"
       },
-      "order": 19
+      "order": 7
     },
     {
       "id": "Park",
@@ -260,7 +260,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(125, 83%, 88%)"
       },
-      "order": 20
+      "order": 8
     },
     {
       "id": "Garden",
@@ -283,7 +283,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(91, 60%, 81%)"
       },
-      "order": 23
+      "order": 9
     },
     {
       "id": "Garden pattern",
@@ -307,7 +307,7 @@
         "fill-opacity": 0.6,
         "fill-pattern": "plant_nursery"
       },
-      "order": 24
+      "order": 10
     },
     {
       "id": "Wood",
@@ -330,7 +330,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(102, 36%, 72%)"
       },
-      "order": 25
+      "order": 11
     },
     {
       "id": "Tidalflat",
@@ -353,7 +353,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(28, 19%, 84%)"
       },
-      "order": 26
+      "order": 12
     },
     {
       "id": "Wetland and swamp",
@@ -377,7 +377,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(102, 36%, 72%)"
       },
-      "order": 27
+      "order": 13
     },
     {
       "id": "Scree",
@@ -400,7 +400,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(30, 35%, 90%)"
       },
-      "order": 28
+      "order": 14
     },
     {
       "id": "Sand",
@@ -423,7 +423,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(45, 70%, 87%)"
       },
-      "order": 29
+      "order": 15
     },
     {
       "id": "Recreation ground",
@@ -446,7 +446,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(126, 100%, 92%)"
       },
-      "order": 30
+      "order": 16
     },
     {
       "id": "Orchard and vineyard",
@@ -471,7 +471,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(109, 48%, 76%)"
       },
-      "order": 31
+      "order": 17
     },
     {
       "id": "Meadow",
@@ -497,7 +497,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(91, 60%, 81%)"
       },
-      "order": 32
+      "order": 18
     },
     {
       "id": "Mangrove",
@@ -520,7 +520,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(80, 35%, 76%)"
       },
-      "order": 33
+      "order": 19
     },
     {
       "id": "Heath",
@@ -543,7 +543,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(63, 43%, 74%)"
       },
-      "order": 34
+      "order": 20
     },
     {
       "id": "Forest",
@@ -566,7 +566,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(102, 36%, 72%)"
       },
-      "order": 35
+      "order": 21
     },
     {
       "id": "Farmland",
@@ -589,7 +589,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(64, 47%, 89%)"
       },
-      "order": 36
+      "order": 22
     },
     {
       "id": "Farm",
@@ -612,7 +612,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(35, 75%, 85%)"
       },
-      "order": 37
+      "order": 23
     },
     {
       "id": "Scrub",
@@ -635,7 +635,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(80, 35%, 76%)"
       },
-      "order": 38
+      "order": 24
     },
     {
       "id": "Dune",
@@ -658,7 +658,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(45, 70%, 87%)"
       },
-      "order": 39
+      "order": 25
     },
     {
       "id": "Beach",
@@ -681,7 +681,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(48, 100%, 86%)"
       },
-      "order": 40
+      "order": 26
     },
     {
       "id": "Bare rock",
@@ -704,7 +704,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(30, 35%, 90%)"
       },
-      "order": 41
+      "order": 27
     },
     {
       "id": "Allotments",
@@ -727,7 +727,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(102, 36%, 82%)"
       },
-      "order": 42
+      "order": 28
     },
     {
       "id": "Grass",
@@ -752,7 +752,7 @@
         "fill-antialias": true,
         "fill-color": "hsl(91, 60%, 81%)"
       },
-      "order": 43
+      "order": 29
     },
     {
       "id": "Landcover outline",
@@ -803,7 +803,7 @@
           0.5
         ]
       },
-      "order": 44
+      "order": 30
     },
     {
       "id": "Glacier",
@@ -824,7 +824,7 @@
         "fill-antialias": false,
         "fill-color": "hsl(180, 28%, 90%)"
       },
-      "order": 45
+      "order": 31
     },
     {
       "id": "Glacier outline",
@@ -876,7 +876,7 @@
           ]
         }
       },
-      "order": 46
+      "order": 32
     },
     {
       "id": "Landcover patterns",
@@ -992,7 +992,7 @@
           ""
         ]
       },
-      "order": 54
+      "order": 40
     }
   ]
 }

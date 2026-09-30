@@ -188,6 +188,9 @@ UPDATE osm_highway_linestring hl
   SET network = rm.network_type
   FROM transportation_route_member_coalesced rm
   WHERE hl.osm_id=rm.member AND rm.concurrency_index=1;
+  
+DROP TRIGGER IF EXISTS trigger_store_transportation_highway_linestring_gen_z11 ON osm_highway_linestring_gen_z11;
+DROP TRIGGER IF EXISTS trigger_flag_transportation_z11 ON osm_highway_linestring_gen_z11;
 
 -- etldoc:  osm_route_member ->  osm_highway_linestring_gen_z11
 UPDATE osm_highway_linestring_gen_z11 hl
