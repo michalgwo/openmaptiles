@@ -25,8 +25,8 @@ SELECT
     ABS(osm_id) AS id, -- mvt feature IDs can't be negative
     geometry,
     name,
-    COALESCE(NULLIF(name_en, ''), name) AS name_en,
-    COALESCE(NULLIF(name_de, ''), name, name_en) AS name_de,
+    NULL::text AS name_en,
+    NULL::text AS name_de,
     tags,
     aerodrome_type AS class,
     NULLIF(iata, '') AS iata,
@@ -46,8 +46,8 @@ SELECT
     ABS(osm_id) AS id, -- mvt feature IDs can't be negative
     geometry,
     name,
-    COALESCE(NULLIF(name_en, ''), name) AS name_en,
-    COALESCE(NULLIF(name_de, ''), name, name_en) AS name_de,
+    NULL::text AS name_en,
+    NULL::text AS name_de,
     tags,
     aerodrome_type AS class,
     NULLIF(iata, '') AS iata,

@@ -23,8 +23,8 @@ $$
 SELECT osm_id_hash AS osm_id,
        geometry,
        NULLIF(name, '') AS name,
-       COALESCE(NULLIF(name_en, ''), name) AS name_en,
-       COALESCE(NULLIF(name_de, ''), name, name_en) AS name_de,
+       NULL::text AS name_en,
+       NULL::text AS name_de,
        tags,
        poi_class(subclass, mapping_key) AS class,
        CASE

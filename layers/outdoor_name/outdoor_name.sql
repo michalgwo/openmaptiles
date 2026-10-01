@@ -246,8 +246,8 @@ SELECT
         END AS osm_id_hash,
     geometry,
     name,
-    COALESCE(NULLIF(name_en, ''), name) AS name_en,
-    COALESCE(NULLIF(name_de, ''), name, name_en) AS name_de,
+    NULL::text AS name_en,
+    NULL::text AS name_de,
     tags,
     class
 FROM osm_outdoor_lineline
@@ -264,8 +264,8 @@ SELECT
         END AS osm_id_hash,
     geometry,
     name,
-    COALESCE(NULLIF(name_en, ''), name) AS name_en,
-    COALESCE(NULLIF(name_de, ''), name, name_en) AS name_de,
+    NULL::text AS name_en,
+    NULL::text AS name_de,
     tags,
     class
 FROM osm_outdoor_point
