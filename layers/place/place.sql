@@ -78,6 +78,7 @@ FROM (
          WHERE geometry && bbox
            AND name <> ''
            AND zoom_level > 1
+           AND rank < 3
 
          UNION ALL
 
