@@ -183,6 +183,8 @@ BEGIN
         return -299133;
     elsif (rb_url LIKE '%europe/sweden%') then
         return -52822;
+    elsif (rb_url LIKE '%europe/ukraine%') then
+        return -60199;
     elsif (rb_url LIKE '%europe/finland%') then
         return -54224;
     elsif (rb_url LIKE '%europe/denmark%') then
