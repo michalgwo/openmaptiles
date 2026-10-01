@@ -67,7 +67,7 @@ SELECT osm_id,
        name,
        name_en,
        name_de,
-       COALESCE("natural", landuse) AS class,
+       COALESCE(NULLIF("natural", ''), landuse) AS class,
        update_tags(tags, ST_PointOnSurface(geometry)) AS tags,
        ST_Area(geometry) AS area
 FROM osm_outdoor_name_polygon
