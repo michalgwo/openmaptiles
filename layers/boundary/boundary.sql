@@ -530,7 +530,7 @@ SELECT geometry,
        claimed_by,
        maritime
 FROM osm_border_linestring_gen_z7
-WHERE admin_level <= 6
+WHERE admin_level <= 4
     );
 
 -- etldoc: osm_border_linestring_gen_z8 -> boundary_z8
@@ -545,7 +545,7 @@ SELECT geometry,
        claimed_by,
        maritime
 FROM osm_border_linestring_gen_z8
-WHERE admin_level <= 6
+WHERE admin_level <= 4
     );
 
 -- etldoc: osm_border_linestring_gen_z9 -> boundary_z9
@@ -560,7 +560,7 @@ SELECT geometry,
        claimed_by,
        maritime
 FROM osm_border_linestring_gen_z9
-WHERE admin_level <= 6
+WHERE admin_level <= 4
     );
 
 -- etldoc: osm_border_linestring_gen_z10 -> boundary_z10
@@ -575,7 +575,7 @@ SELECT geometry,
        claimed_by,
        maritime
 FROM osm_border_linestring_gen_z10
-WHERE admin_level <= 6
+WHERE admin_level <= 4
     );
 
 -- etldoc: osm_border_linestring_gen_z11 -> boundary_z11
@@ -590,7 +590,7 @@ SELECT geometry,
        claimed_by,
        maritime
 FROM osm_border_linestring_gen_z11
-WHERE admin_level <= 8
+WHERE admin_level <= 4
     );
 
 -- etldoc: osm_border_linestring_gen_z12 -> boundary_z12
@@ -605,6 +605,7 @@ SELECT geometry,
        claimed_by,
        maritime
 FROM osm_border_linestring_gen_z12
+WHERE admin_level <= 4
     );
 
 -- etldoc: osm_border_linestring_gen_z13 -> boundary_z13
@@ -619,6 +620,7 @@ SELECT geometry,
        claimed_by,
        maritime
 FROM osm_border_linestring_gen_z13
+WHERE admin_level <= 4
     );
 
 -- etldoc: layer_boundary[shape=record fillcolor=lightpink, style="rounded,filled",
@@ -646,85 +648,85 @@ FROM (
          SELECT *
          FROM boundary_z0
          WHERE geometry && bbox
-           AND zoom_level = 0
+           AND zoom_level = 0 AND admin_level = 2
          UNION ALL
          -- etldoc: boundary_z1 ->  layer_boundary:z1
          SELECT *
          FROM boundary_z1
          WHERE geometry && bbox
-           AND zoom_level = 1
+           AND zoom_level = 1 AND admin_level = 2
          UNION ALL
          -- etldoc: boundary_z2 ->  layer_boundary:z2
          SELECT *
          FROM boundary_z2
          WHERE geometry && bbox
-           AND zoom_level = 2
+           AND zoom_level = 2 AND admin_level = 2
          UNION ALL
          -- etldoc: boundary_z3 ->  layer_boundary:z3
          SELECT *
          FROM boundary_z3
          WHERE geometry && bbox
-           AND zoom_level = 3
+           AND zoom_level = 3 AND (admin_level = 2 OR (maritime = FALSE AND admin_level < 5))
          UNION ALL
          -- etldoc: boundary_z4 ->  layer_boundary:z4
          SELECT *
          FROM boundary_z4
-         WHERE geometry && bbox
+         WHERE geometry && bbox AND (admin_level = 2 OR (maritime = FALSE AND admin_level < 5))
            AND zoom_level = 4
          UNION ALL
          -- etldoc: boundary_z5 ->  layer_boundary:z5
          SELECT *
          FROM boundary_z5
-         WHERE geometry && bbox
+         WHERE geometry && bbox AND (admin_level = 2 OR (maritime = FALSE AND admin_level < 5))
            AND zoom_level = 5
          UNION ALL
          -- etldoc: boundary_z6 ->  layer_boundary:z6
          SELECT *
          FROM boundary_z6
          WHERE geometry && bbox
-           AND zoom_level = 6
+           AND zoom_level = 6 AND (admin_level = 2 OR (maritime = FALSE AND admin_level < 5))
          UNION ALL
          -- etldoc: boundary_z7 ->  layer_boundary:z7
          SELECT *
          FROM boundary_z7
          WHERE geometry && bbox
-           AND zoom_level = 7
+           AND zoom_level = 7 AND (admin_level = 2 OR (maritime = FALSE AND admin_level < 5))
          UNION ALL
          -- etldoc: boundary_z8 ->  layer_boundary:z8
          SELECT *
          FROM boundary_z8
          WHERE geometry && bbox
-           AND zoom_level = 8
+           AND zoom_level = 8 AND (admin_level = 2 OR (maritime = FALSE AND admin_level < 5))
          UNION ALL
          -- etldoc: boundary_z9 ->  layer_boundary:z9
          SELECT *
          FROM boundary_z9
          WHERE geometry && bbox
-           AND zoom_level = 9
+           AND zoom_level = 9 AND (admin_level = 2 OR (maritime = FALSE AND admin_level < 5))
          UNION ALL
          -- etldoc: boundary_z10 ->  layer_boundary:z10
          SELECT *
          FROM boundary_z10
          WHERE geometry && bbox
-           AND zoom_level = 10
+           AND zoom_level = 10 AND (admin_level = 2 OR (maritime = FALSE AND admin_level < 5))
          UNION ALL
          -- etldoc: boundary_z11 ->  layer_boundary:z11
          SELECT *
          FROM boundary_z11
          WHERE geometry && bbox
-           AND zoom_level = 11
+           AND zoom_level = 11 AND (admin_level = 2 OR (maritime = FALSE AND admin_level < 5))
          UNION ALL
          -- etldoc: boundary_z12 ->  layer_boundary:z12
          SELECT *
          FROM boundary_z12
          WHERE geometry && bbox
-           AND zoom_level = 12
+           AND zoom_level = 12 AND (admin_level = 2 OR (maritime = FALSE AND admin_level < 5))
          UNION ALL
          -- etldoc: boundary_z13 -> layer_boundary:z13
          SELECT *
          FROM boundary_z13
          WHERE geometry && bbox
-           AND zoom_level >= 13
+           AND zoom_level >= 13 AND (admin_level = 2 OR (maritime = FALSE AND admin_level < 5))
      ) AS segment_zoom_levels
 
 UNION ALL

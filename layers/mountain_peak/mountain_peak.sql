@@ -77,7 +77,7 @@ FROM (
             OR name <> ''
            )
      ) AS ranked_peaks
-WHERE zoom_level >= 7
+WHERE zoom_level >= 11
   AND (rank <= 5 OR zoom_level >= 14)
 
 UNION ALL

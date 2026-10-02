@@ -33,54 +33,54 @@ FROM (
                 tags,
                 NULL::int AS rank
          FROM (
-                  -- etldoc: osm_park_polygon_dissolve_z4 -> layer_park:z4
-                  SELECT NULL::int AS osm_id,
-                         geometry,
-                         NULL AS name,
-                         NULL AS name_en,
-                         NULL AS name_de,
-                         NULL AS tags,
-                         NULL AS leisure,
-                         NULL AS landuse,
-                         NULL AS boundary,
-                         NULL AS historic,
-                         NULL AS maritime
-                  FROM osm_park_polygon_dissolve_z4
-                  WHERE zoom_level = 4
-                    AND geometry && bbox
-                  UNION ALL
-                  -- etldoc: osm_park_polygon_gen_z5 -> layer_park:z5
-                  SELECT osm_id,
-                         geometry,
-                         name,
-                         name_en,
-                         name_de,
-                         tags,
-                         leisure,
-                         landuse,
-                         boundary,
-                         historic,
-                         maritime
-                  FROM osm_park_polygon_gen_z5
-                  WHERE zoom_level = 5
-                    AND geometry && bbox
-                  UNION ALL
-                  -- etldoc: osm_park_polygon_gen_z6 -> layer_park:z6
-                  SELECT osm_id,
-                         geometry,
-                         name,
-                         name_en,
-                         name_de,
-                         tags,
-                         leisure,
-                         landuse,
-                         boundary,
-                         historic,
-                         maritime
-                  FROM osm_park_polygon_gen_z6
-                  WHERE zoom_level = 6
-                    AND geometry && bbox
-                  UNION ALL
+              --     -- etldoc: osm_park_polygon_dissolve_z4 -> layer_park:z4
+              --     SELECT NULL::int AS osm_id,
+              --            geometry,
+              --            NULL AS name,
+              --            NULL AS name_en,
+              --            NULL AS name_de,
+              --            NULL AS tags,
+              --            NULL AS leisure,
+              --            NULL AS landuse,
+              --            NULL AS boundary,
+              --            NULL AS historic,
+              --            NULL AS maritime
+              --     FROM osm_park_polygon_dissolve_z4
+              --     WHERE zoom_level = 4
+              --       AND geometry && bbox
+              --     UNION ALL
+              --     -- etldoc: osm_park_polygon_gen_z5 -> layer_park:z5
+              --     SELECT osm_id,
+              --            geometry,
+              --            name,
+              --            name_en,
+              --            name_de,
+              --            tags,
+              --            leisure,
+              --            landuse,
+              --            boundary,
+              --            historic,
+              --            maritime
+              --     FROM osm_park_polygon_gen_z5
+              --     WHERE zoom_level = 5
+              --       AND geometry && bbox
+              --     UNION ALL
+              --     -- etldoc: osm_park_polygon_gen_z6 -> layer_park:z6
+              --     SELECT osm_id,
+              --            geometry,
+              --            name,
+              --            name_en,
+              --            name_de,
+              --            tags,
+              --            leisure,
+              --            landuse,
+              --            boundary,
+              --            historic,
+              --            maritime
+              --     FROM osm_park_polygon_gen_z6
+              --     WHERE zoom_level = 6
+              --       AND geometry && bbox
+              --     UNION ALL
                   -- etldoc: osm_park_polygon_gen_z7 -> layer_park:z7
                   SELECT osm_id,
                          geometry,
@@ -95,7 +95,7 @@ FROM (
                          maritime
                   FROM osm_park_polygon_gen_z7
                   WHERE zoom_level = 7
-                    AND geometry && bbox
+                    AND geometry && bbox AND boundary = 'national_park'
                   UNION ALL
                   -- etldoc: osm_park_polygon_gen_z8 -> layer_park:z8
                   SELECT osm_id,
@@ -227,42 +227,42 @@ FROM (
                     )::int AS "rank"
          FROM (
                   -- etldoc: osm_park_polygon_gen_z5 -> layer_park:z5
-                  SELECT osm_id,
-                         geometry_point,
-                         name,
-                         name_en,
-                         name_de,
-                         tags,
-                         leisure,
-                         landuse,
-                         boundary,
-                         historic,
-                         maritime,
-                         area
-                  FROM osm_park_polygon_gen_z5
-                  WHERE zoom_level = 5
-                    AND geometry_point && bbox
-                    AND area > 70000*2^(20-zoom_level)
-                  UNION ALL
+              --     SELECT osm_id,
+              --            geometry_point,
+              --            name,
+              --            name_en,
+              --            name_de,
+              --            tags,
+              --            leisure,
+              --            landuse,
+              --            boundary,
+              --            historic,
+              --            maritime,
+              --            area
+              --     FROM osm_park_polygon_gen_z5
+              --     WHERE zoom_level = 5
+              --       AND geometry_point && bbox
+              --       AND area > 70000*2^(20-zoom_level)
+              --     UNION ALL
 
-                  -- etldoc: osm_park_polygon_gen_z6 -> layer_park:z6
-                  SELECT osm_id,
-                         geometry_point,
-                         name,
-                         name_en,
-                         name_de,
-                         tags,
-                         leisure,
-                         landuse,
-                         boundary,
-                         historic,
-                         maritime,
-                         area
-                  FROM osm_park_polygon_gen_z6
-                  WHERE zoom_level = 6
-                    AND geometry_point && bbox
-                    AND area > 70000*2^(20-zoom_level)
-                  UNION ALL
+              --     -- etldoc: osm_park_polygon_gen_z6 -> layer_park:z6
+              --     SELECT osm_id,
+              --            geometry_point,
+              --            name,
+              --            name_en,
+              --            name_de,
+              --            tags,
+              --            leisure,
+              --            landuse,
+              --            boundary,
+              --            historic,
+              --            maritime,
+              --            area
+              --     FROM osm_park_polygon_gen_z6
+              --     WHERE zoom_level = 6
+              --       AND geometry_point && bbox
+              --       AND area > 70000*2^(20-zoom_level)
+              --     UNION ALL
 
                   -- etldoc: osm_park_polygon_gen_z7 -> layer_park:z7
                   SELECT osm_id,

@@ -19,23 +19,23 @@ AS
 $$
 SELECT *
 FROM (
-         SELECT
-             -- etldoc: osm_continent_point -> layer_place:z0_3
-             osm_id * 10 AS osm_id,
-             geometry,
-             name,
-             NULL::text AS name_en,
-             NULL::text AS name_de,
-             tags,
-             'continent' AS class,
-             1 AS "rank",
-             NULL::int AS capital,
-             NULL::text AS iso_a2
-         FROM osm_continent_point
-         WHERE geometry && bbox
-           AND zoom_level < 4
+        --  SELECT
+        --      -- etldoc: osm_continent_point -> layer_place:z0_3
+        --      osm_id * 10 AS osm_id,
+        --      geometry,
+        --      name,
+        --      NULL::text AS name_en,
+        --      NULL::text AS name_de,
+        --      tags,
+        --      'continent' AS class,
+        --      1 AS "rank",
+        --      NULL::int AS capital,
+        --      NULL::text AS iso_a2
+        --  FROM osm_continent_point
+        --  WHERE geometry && bbox
+        --    AND zoom_level < 4
 
-         UNION ALL
+        --  UNION ALL
 
          SELECT
              -- etldoc: osm_country_point -> layer_place:z0_3
@@ -56,6 +56,7 @@ FROM (
          WHERE geometry && bbox
            AND "rank" <= zoom_level + 1
            AND name <> ''
+           AND zoom_level > 1
 
          UNION ALL
 
@@ -77,7 +78,7 @@ FROM (
          FROM osm_state_point
          WHERE geometry && bbox
            AND name <> ''
-           AND zoom_level > 1
+           AND zoom_level > 3
            AND rank < 3
 
          UNION ALL

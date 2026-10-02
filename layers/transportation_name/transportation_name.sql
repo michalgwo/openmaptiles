@@ -100,70 +100,70 @@ SELECT geometry,
 FROM (
 
          -- etldoc: osm_transportation_name_linestring_gen4 ->  layer_transportation_name:z6
-         SELECT geometry,
-                tags,
-                ref,
-                highway,
-                subclass,
-                brunnel,
-                network,
-                route_1,
-                route_2,
-                route_3,
-                route_4,
-                route_5,
-                route_6,
-                z_order,
-                NULL::int AS layer,
-                NULL::int AS level,
-                NULL::boolean AS indoor
-         FROM osm_transportation_name_linestring_gen4
-         WHERE zoom_level = 6
-         UNION ALL
+        --  SELECT geometry,
+        --         tags,
+        --         ref,
+        --         highway,
+        --         subclass,
+        --         brunnel,
+        --         network,
+        --         route_1,
+        --         route_2,
+        --         route_3,
+        --         route_4,
+        --         route_5,
+        --         route_6,
+        --         z_order,
+        --         NULL::int AS layer,
+        --         NULL::int AS level,
+        --         NULL::boolean AS indoor
+        --  FROM osm_transportation_name_linestring_gen4
+        --  WHERE zoom_level = 6
+        --  UNION ALL
 
-         -- etldoc: osm_transportation_name_linestring_gen3 ->  layer_transportation_name:z7
-         SELECT geometry,
-                tags,
-                ref,
-                highway,
-                subclass,
-                brunnel,
-                network,
-                route_1,
-                route_2,
-                route_3,
-                route_4,
-                route_5,
-                route_6,
-                z_order,
-                NULL::int AS layer,
-                NULL::int AS level,
-                NULL::boolean AS indoor
-         FROM osm_transportation_name_linestring_gen3
-         WHERE ST_Length(geometry) > 20000 AND zoom_level = 7
-         UNION ALL
+        --  -- etldoc: osm_transportation_name_linestring_gen3 ->  layer_transportation_name:z7
+        --  SELECT geometry,
+        --         tags,
+        --         ref,
+        --         highway,
+        --         subclass,
+        --         brunnel,
+        --         network,
+        --         route_1,
+        --         route_2,
+        --         route_3,
+        --         route_4,
+        --         route_5,
+        --         route_6,
+        --         z_order,
+        --         NULL::int AS layer,
+        --         NULL::int AS level,
+        --         NULL::boolean AS indoor
+        --  FROM osm_transportation_name_linestring_gen3
+        --  WHERE ST_Length(geometry) > 20000 AND zoom_level = 7
+        --  UNION ALL
 
-         -- etldoc: osm_transportation_name_linestring_gen2 ->  layer_transportation_name:z8
-         SELECT geometry,
-                tags,
-                ref,
-                highway,
-                subclass,
-                brunnel,
-                network,
-                route_1,
-                route_2,
-                route_3,
-                route_4,
-                route_5,
-                route_6,
-                z_order,
-                NULL::int AS layer,
-                NULL::int AS level,
-                NULL::boolean AS indoor
-         FROM osm_transportation_name_linestring_gen2
-         WHERE ST_Length(geometry) > 14000 AND zoom_level = 8
-         UNION ALL
+        --  -- etldoc: osm_transportation_name_linestring_gen2 ->  layer_transportation_name:z8
+        --  SELECT geometry,
+        --         tags,
+        --         ref,
+        --         highway,
+        --         subclass,
+        --         brunnel,
+        --         network,
+        --         route_1,
+        --         route_2,
+        --         route_3,
+        --         route_4,
+        --         route_5,
+        --         route_6,
+        --         z_order,
+        --         NULL::int AS layer,
+        --         NULL::int AS level,
+        --         NULL::boolean AS indoor
+        --  FROM osm_transportation_name_linestring_gen2
+        --  WHERE ST_Length(geometry) > 14000 AND zoom_level = 8
+        --  UNION ALL
 
          -- etldoc: osm_transportation_name_linestring_gen1 ->  layer_transportation_name:z9
          -- etldoc: osm_transportation_name_linestring_gen1 ->  layer_transportation_name:z10
@@ -186,7 +186,7 @@ FROM (
                 NULL::int AS level,
                 NULL::boolean AS indoor
          FROM osm_transportation_name_linestring_gen1
-         WHERE ST_Length(geometry) > 8000 / POWER(2, zoom_level - 9) AND zoom_level BETWEEN 9 AND 11
+         WHERE ST_Length(geometry) > 8000 / POWER(2, zoom_level - 9) AND zoom_level = 11
          UNION ALL
 
          -- etldoc: osm_transportation_name_linestring ->  layer_transportation_name:z12
@@ -282,7 +282,7 @@ FROM (
                 NULL::int AS level,
                 NULL::boolean AS indoor
          FROM osm_highway_point p
-         WHERE highway = 'motorway_junction' AND zoom_level >= 10
+         WHERE highway = 'motorway_junction' AND zoom_level >= 11
      ) AS zoom_levels
 WHERE geometry && bbox
 ORDER BY z_order ASC;

@@ -278,33 +278,33 @@ SELECT osm_id,
        CASE WHEN access IN ('private', 'no') THEN 'no' END AS access
 FROM (
          -- etldoc: ne_50m_urban_areas_gen_z4 -> layer_landuse:z4
-         SELECT osm_id,
-                geometry,
-                landuse,
-                amenity,
-                leisure,
-                tourism,
-                place,
-                waterway,
-                parking,
-                access
-         FROM ne_50m_urban_areas_gen_z4
-         WHERE zoom_level = 4
-         UNION ALL
-         -- etldoc: ne_50m_urban_areas_gen_z5 -> layer_landuse:z5
-         SELECT osm_id,
-                geometry,
-                landuse,
-                amenity,
-                leisure,
-                tourism,
-                place,
-                waterway,
-                parking,
-                access
-         FROM ne_50m_urban_areas_gen_z5
-         WHERE zoom_level = 5
-         UNION ALL
+       --   SELECT osm_id,
+       --          geometry,
+       --          landuse,
+       --          amenity,
+       --          leisure,
+       --          tourism,
+       --          place,
+       --          waterway,
+       --          parking,
+       --          access
+       --   FROM ne_50m_urban_areas_gen_z4
+       --   WHERE zoom_level = 4
+       --   UNION ALL
+       --   -- etldoc: ne_50m_urban_areas_gen_z5 -> layer_landuse:z5
+       --   SELECT osm_id,
+       --          geometry,
+       --          landuse,
+       --          amenity,
+       --          leisure,
+       --          tourism,
+       --          place,
+       --          waterway,
+       --          parking,
+       --          access
+       --   FROM ne_50m_urban_areas_gen_z5
+       --   WHERE zoom_level = 5
+       --   UNION ALL
          -- etldoc: osm_landuse_polygon_gen_z6_union -> layer_landuse:z6
          SELECT osm_id,
                 geometry,

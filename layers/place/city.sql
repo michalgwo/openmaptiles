@@ -30,8 +30,8 @@ FROM (
                 normalize_capital_level(capital) AS capital
          FROM osm_city_point
          WHERE geometry && bbox
-           AND ((zoom_level = 2 AND "rank" = 1)
-             OR (zoom_level BETWEEN 3 AND 7 AND "rank" <= zoom_level + 1)
+           AND ((zoom_level = 3 AND "rank" = 1)
+             OR (zoom_level BETWEEN 4 AND 7 AND "rank" <= zoom_level + 1)
              )
          UNION ALL
          SELECT osm_id,

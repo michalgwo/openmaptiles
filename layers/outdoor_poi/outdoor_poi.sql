@@ -26,14 +26,14 @@ FROM (
          SELECT *
          FROM osm_outdoor_poi_point
          WHERE geometry && bbox
-           AND zoom_level >= 12
+           AND zoom_level >= 14
 
          UNION ALL
 
          SELECT *
          FROM osm_outdoor_poi_polygon
          WHERE geometry && bbox 
-			      AND zoom_level >= 12
+			      AND zoom_level >= 14
 
      ) AS outdoor_poi_union
 $$ LANGUAGE SQL STABLE

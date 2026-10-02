@@ -820,7 +820,7 @@ BEGIN
             WHERE transportation.changes_z4_z5_z6_z7.is_old IS FALSE AND
                   transportation.changes_z4_z5_z6_z7.id = osm_transportation_merge_linestring_gen_z7.id
         )) AND
-        (highway IN ('motorway', 'trunk') OR construction IN ('motorway', 'trunk')) AND
+        (highway IN ('motorway') OR construction IN ('motorway')) AND
         ST_Length(geometry) > 100
     ON CONFLICT (id) DO UPDATE SET osm_id = excluded.osm_id, highway = excluded.highway, network = excluded.network,
                                    construction = excluded.construction, is_bridge = excluded.is_bridge,
@@ -869,7 +869,7 @@ BEGIN
                       transportation.changes_z4_z5_z6_z7.id = osm_transportation_merge_linestring_gen_z6.id
             )) AND
             -- Include all motorway and trunk roads for merging
-            (highway IN ('motorway', 'trunk') OR construction IN ('motorway', 'trunk'))
+            (highway IN ('motorway') OR construction IN ('motorway'))
     ),
     merged_z5 AS (
         -- Step 2: Merge normalized geometry using ST_LineMerge
