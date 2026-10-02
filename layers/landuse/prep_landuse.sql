@@ -110,7 +110,7 @@ DROP TABLE IF EXISTS osm_residential_gen_z7 CASCADE;
 CREATE TABLE osm_residential_gen_z7 AS
 (
 SELECT ST_SimplifyVW(geometry, power(zres(7), 2)) AS geometry
-FROM cluster_zres12_union
+FROM cluster_zres9_union
 WHERE ST_Area(geometry) > power(zres(6), 2)
 );
 CREATE INDEX ON osm_residential_gen_z7 USING gist(geometry);
