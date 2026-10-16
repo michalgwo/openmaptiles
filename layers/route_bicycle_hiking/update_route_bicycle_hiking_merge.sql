@@ -4,7 +4,7 @@ DROP TRIGGER IF EXISTS trigger_flag_route_bicycle_hiking ON osm_route_bicycle_hi
 DROP TRIGGER IF EXISTS trigger_refresh ON route_bicycle_hiking.updates;
 
 TRUNCATE osm_route_bicycle_hiking_linestring;
-INSERT INTO osm_route_bicycle_hiking_linestring (relation_id, osm_id, role, type, route, ref, network, name, colour, symbol, wiki_symbol, scale, geometry)
+INSERT INTO osm_route_bicycle_hiking_linestring (relation_id, osm_id, role, type, route, ref, network, name, tags, colour, symbol, wiki_symbol, scale, geometry)
 SELECT
 	h.rel_member['rel_id']::bigint AS relation_id,
 	h.way_id AS osm_id,
@@ -14,6 +14,8 @@ SELECT
 	r.ref,
 	r.network,
 	r.name,
+    (SELECT coalesce(hstore(array_agg(key), array_agg(value)), ''::hstore)
+        FROM jsonb_each_text(r.tags)) AS tags,
     r.colour,
     r.symbol,
     r.wiki_symbol,
@@ -497,6 +499,7 @@ SELECT DISTINCT ON (osm_id, route, relation_id)
     network,
     network_org,
     name,
+    tags,
     ref,
     colour,
     symbol,
@@ -512,7 +515,8 @@ FROM (
         route, 
         network_level(network) AS network,
         network AS network_org,
-        name, 
+        name,
+        tags,
         ref, 
         colour, 
         symbol, 
@@ -532,7 +536,8 @@ FROM (
         route, 
         NULL AS network,
         NULL AS network_org,
-        name, 
+        name,
+        tags,
         NULL AS ref, 
         NULL AS colour, 
         NULL AS symbol, 
@@ -570,6 +575,7 @@ SELECT
     hiking.ref AS hiking_ref,
     hiking.network_org AS network,
     hiking.name AS name,
+    hiking.tags AS tags,
     hiking.ref AS ref,
     hiking.colour AS colour,
     hiking.colour AS color,
@@ -595,9 +601,9 @@ FROM osm_border_linestring_union
 WHERE ST_GeometryType(geometry)='ST_LineString';
 
 CREATE OR REPLACE VIEW osm_route_bicycle_hiking_network_union AS
-SELECT ST_Union(h.geometry) as geometry, h.relation_id, h.class, h.bicycle_network, h.bicycle_name, h.bicycle_ref, h.hiking_network, h.hiking_name, h.hiking_ref, h.network, h.name, h.ref, h.colour, h.color, h.symbol, h.wiki_symbol, h.scale
+SELECT ST_Union(h.geometry) as geometry, h.relation_id, h.class, h.bicycle_network, h.bicycle_name, h.bicycle_ref, h.hiking_network, h.hiking_name, h.hiking_ref, h.network, h.name, h.tags, h.ref, h.colour, h.color, h.symbol, h.wiki_symbol, h.scale
 FROM osm_route_bicycle_hiking_network h
-GROUP BY h.relation_id, h.class, h.bicycle_network, h.bicycle_name, h.bicycle_ref, h.hiking_network, h.hiking_name, h.hiking_ref, h.network, h.name, h.ref, h.colour, h.color, h.symbol, h.wiki_symbol, h.scale;
+GROUP BY h.relation_id, h.class, h.bicycle_network, h.bicycle_name, h.bicycle_ref, h.hiking_network, h.hiking_name, h.hiking_ref, h.network, h.name, h.tags, h.ref, h.colour, h.color, h.symbol, h.wiki_symbol, h.scale;
 
 
 CREATE TABLE IF NOT EXISTS osm_route_bicycle_hiking_network_merge (
@@ -613,6 +619,7 @@ CREATE TABLE IF NOT EXISTS osm_route_bicycle_hiking_network_merge (
     hiking_ref varchar,
     network varchar,
     name varchar,
+    tags hstore,
     ref varchar,
     colour varchar,
     color varchar,
@@ -625,7 +632,7 @@ TRUNCATE osm_route_bicycle_hiking_network_merge;
 
 -- etldoc: osm_route_bicycle_hiking_network -> osm_route_bicycle_hiking_network_merge
 
-INSERT INTO osm_route_bicycle_hiking_network_merge (geometry, relation_id, class, bicycle_network, bicycle_name, bicycle_ref, hiking_network, hiking_name, hiking_ref, network, name, ref, colour, color, symbol, wiki_symbol, scale)
+INSERT INTO osm_route_bicycle_hiking_network_merge (geometry, relation_id, class, bicycle_network, bicycle_name, bicycle_ref, hiking_network, hiking_name, hiking_ref, network, name, tags, ref, colour, color, symbol, wiki_symbol, scale)
 SELECT (ST_Dump(ST_LineMerge(
         CASE 
             WHEN b.geometry IS NOT NULL THEN ST_Intersection(b.geometry, h.geometry)
@@ -642,6 +649,7 @@ SELECT (ST_Dump(ST_LineMerge(
     h.hiking_ref,
     h.network,
     h.name,
+    update_tags(h.tags, h.geometry),
     h.ref,
     h.colour,
     h.color,
@@ -691,6 +699,7 @@ BEGIN
         hiking_ref,
         network,
         name,
+        tags,
         ref,
         colour,
         color,
@@ -717,6 +726,7 @@ BEGIN
         hiking_ref,
         network,
         name,
+        tags,
         ref,
         colour,
         color,
@@ -742,6 +752,7 @@ BEGIN
         hiking_ref,
         network,
         name,
+        tags,
         ref,
         colour,
         color,
@@ -767,6 +778,7 @@ BEGIN
         hiking_ref,
         network,
         name,
+        tags,
         ref,
         colour,
         color,
@@ -792,6 +804,7 @@ BEGIN
         hiking_ref,
         network,
         name,
+        tags,
         ref,
         colour,
         color,
@@ -817,6 +830,7 @@ BEGIN
         hiking_ref,
         network,
         name,
+        tags,
         ref,
         colour,
         color,
@@ -842,6 +856,7 @@ BEGIN
         hiking_ref,
         network,
         name,
+        tags,
         ref,
         colour,
         color,
@@ -867,6 +882,7 @@ BEGIN
         hiking_ref,
         network,
         name,
+        tags,
         ref,
         colour,
         color,
@@ -948,6 +964,7 @@ CREATE TABLE IF NOT EXISTS route_bicycle_hiking.changes
     route varchar,
     network varchar,
     name varchar,
+    tags hstore,
     ref varchar,
     colour varchar,
     symbol varchar,
@@ -959,12 +976,12 @@ CREATE OR REPLACE FUNCTION route_bicycle_hiking.store() RETURNS trigger AS
 $$
 BEGIN
     IF (tg_op = 'DELETE' OR tg_op = 'UPDATE') AND old.type = 1 THEN
-        INSERT INTO route_bicycle_hiking.changes(osm_id, relation_id, role, is_old, geometry, route, network, name, ref, colour, symbol, wiki_symbol, scale)
-        VALUES (old.osm_id, old.relation_id, old.role, true, old.geometry, old.route, old.network, old.name, old.ref, old.colour, old.symbol, old.wiki_symbol, old.scale);
+        INSERT INTO route_bicycle_hiking.changes(osm_id, relation_id, role, is_old, geometry, route, network, name, tags, ref, colour, symbol, wiki_symbol, scale)
+        VALUES (old.osm_id, old.relation_id, old.role, true, old.geometry, old.route, old.network, old.name, old.tags, old.ref, old.colour, old.symbol, old.wiki_symbol, old.scale);
     END IF;
     IF (tg_op = 'UPDATE' OR tg_op = 'INSERT') AND new.type = 1 THEN
-        INSERT INTO route_bicycle_hiking.changes(osm_id, relation_id, role, is_old, geometry, route, network, name, ref, colour, symbol, wiki_symbol, scale)
-        VALUES (new.osm_id, new.relation_id, new.role, false, new.geometry, new.route, new.network, new.name, new.ref, new.colour, new.symbol, new.wiki_symbol, new.scale);
+        INSERT INTO route_bicycle_hiking.changes(osm_id, relation_id, role, is_old, geometry, route, network, name, tags, ref, colour, symbol, wiki_symbol, scale)
+        VALUES (new.osm_id, new.relation_id, new.role, false, new.geometry, new.route, new.network, new.name, new.tags, new.ref, new.colour, new.symbol, new.wiki_symbol, new.scale);
     END IF;
     RETURN NULL;
 END;
@@ -1006,6 +1023,7 @@ BEGIN
         route,
         network,
         name,
+        tags,
         ref,
         colour,
         symbol,
@@ -1048,6 +1066,7 @@ BEGIN
         o.route IS NOT DISTINCT FROM n.route AND
         o.network IS NOT DISTINCT FROM n.network AND
         o.name IS NOT DISTINCT FROM n.name AND
+        o.tags IS NOT DISTINCT FROM n.tags AND
         o.ref IS NOT DISTINCT FROM n.ref AND
         o.colour IS NOT DISTINCT FROM n.colour AND
         o.symbol IS NOT DISTINCT FROM n.symbol AND
@@ -1092,6 +1111,7 @@ BEGIN
         network_level(network) AS network,
         network AS network_org,
         name,
+        tags,
         ref,
         colour,
         symbol,
@@ -1106,6 +1126,7 @@ BEGIN
             route,
             network,
             name,
+            tags,
             ref,
             colour,
             symbol,
@@ -1124,6 +1145,7 @@ BEGIN
             route,
             network,
             name,
+            tags,
             ref,
             colour,
             symbol,
@@ -1161,6 +1183,7 @@ BEGIN
         hiking.ref AS hiking_ref,
         hiking.network_org AS network,
         hiking.name AS name,
+        hiking.tags AS tags,
         hiking.ref AS ref,
         hiking.colour AS colour,
         hiking.colour AS color,
@@ -1173,7 +1196,7 @@ BEGIN
             bicycle.osm_id = hiking.osm_id
     ;
 
-    INSERT INTO osm_route_bicycle_hiking_network_merge (geometry, relation_id, class, bicycle_network, bicycle_name, bicycle_ref, hiking_network, hiking_name, hiking_ref, network, name, ref, colour, color, symbol, wiki_symbol, scale)
+    INSERT INTO osm_route_bicycle_hiking_network_merge (geometry, relation_id, class, bicycle_network, bicycle_name, bicycle_ref, hiking_network, hiking_name, hiking_ref, network, name, tags, ref, colour, color, symbol, wiki_symbol, scale)
     SELECT (ST_Dump(ST_LineMerge(ST_Union(geometry)))).geom::geometry(Geometry,3857) AS geometry,
         relation_id,
         class,
@@ -1185,6 +1208,7 @@ BEGIN
         hiking_ref,
         network,
         name,
+        tags,
         ref,
         colour,
         color,
@@ -1204,6 +1228,7 @@ BEGIN
         hiking_ref,
         network,
         name,
+        tags,
         ref,
         colour,
         color,
