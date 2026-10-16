@@ -25,7 +25,6 @@ tables:
     type: relation_member
     mapping:
       route:
-      - bicycle
       - hiking
       - foot
     relation_types: [route]
@@ -54,6 +53,8 @@ tables:
     - name: scale
       key: sac_scale
       type: string
+    - name: tags
+      type: hstore_tags
   via_ferrata_linestring:
     type: linestring
     mapping:
@@ -71,3 +72,5 @@ tables:
     - name: scale
       key: via_ferrata_scale
       type: string
+    - name: tags
+      type: hstore_tags
