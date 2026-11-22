@@ -35,7 +35,8 @@ tables:
       - scree
       - fell
       - bare_rock
-      - glacier 
+      - glacier
+      - grassland
       landuse:
       - meadow
   # etldoc: imposm3 -> osm_outdoor_name_linestring
