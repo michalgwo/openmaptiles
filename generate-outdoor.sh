@@ -25,6 +25,7 @@ else
 fi
 
 make import-osm-outdoor
+make import-wikidata
 make import-sql
 make generate-tiles-pg
 
