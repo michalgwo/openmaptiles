@@ -73,7 +73,7 @@ SELECT osm_id,
 FROM osm_outdoor_name_polygon
 WHERE name <> ''
   AND ST_IsValid(geometry)
-  AND ("natural" IN ('scree', 'fell', 'bare_rock', 'glacier') OR landuse = 'meadow');
+  AND ("natural" IN ('scree', 'fell', 'bare_rock', 'glacier', 'grassland') OR landuse = 'meadow');
 
 CREATE OR REPLACE VIEW osm_outdoor_point_earth_view AS
 SELECT osm_id,
