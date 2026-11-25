@@ -8,7 +8,7 @@ layer:
     name_de: German name `name:de` if available, otherwise `name` or `name:en`. This is deprecated and will be removed in a future release in favor of `name:de`.
     class:
       description: |
-          Distinguish between `valley`, `scree`, `fell`, `bare_rock`, `glacier`, and `meadow`
+          Distinguish between `valley`, `scree`, `fell`, `bare_rock`, `glacier`, `meadow`, and `grassland`
       values:
       - valley
       - scree
@@ -16,6 +16,7 @@ layer:
       - bare_rock
       - glacier
       - meadow
+      - grassland
   buffer_size: 256
   srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
   datasource:
