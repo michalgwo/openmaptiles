@@ -282,6 +282,7 @@ tables:
       - footway
       - cycleway
       - steps
+      - ladder
       - bridleway
       - corridor
       - service
@@ -435,6 +436,7 @@ tables:
       - corridor
       - pedestrian
       - steps
+      - ladder
       public_transport:
       - platform
       man_made:
