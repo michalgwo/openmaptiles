@@ -11,10 +11,13 @@ layer:
     assisted_trail:
       description: |
           assisted_trail osm tag.
+    highway:
+      description: |
+          highway osm tag if highway=ladder.
   datasource:
     geometry_field: geometry
     srid: 900913
-    query: (SELECT geometry, osm_id, assisted_trail FROM layer_path_features(!bbox!, z(!scale_denominator!))) AS t
+    query: (SELECT geometry, osm_id, assisted_trail, highway FROM layer_path_features(!bbox!, z(!scale_denominator!))) AS t
 schema:
   - ./path_features.sql
 datasources:
